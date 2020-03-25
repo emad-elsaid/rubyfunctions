@@ -1,0 +1,9 @@
+<%= render 'common/notice', notice: notice if notice %>
+
+<h1 class="title">Your Functions</h1>
+
+<div class="content">
+  <%= link_to 'New Function', new_function_path, class: 'button' %>
+</div>
+
+<%= render @functions %>

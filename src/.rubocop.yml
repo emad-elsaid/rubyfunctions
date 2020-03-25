@@ -3,8 +3,17 @@ require:
 Style/Documentation:
   Enabled: false
 Style/HashEachMethods:
-  Enabled: false
+  Enabled: true
 Style/HashTransformKeys:
-  Enabled: false
+  Enabled: true
 Style/HashTransformValues:
+  Enabled: true
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+Layout/LineLength:
+  Max: 120
+Rails/UniqueValidationWithoutIndex:
   Enabled: false

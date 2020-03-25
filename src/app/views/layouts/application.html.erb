@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rubyfunctions</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <title>Ruby Functions</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.1/css/bulma.min.css">
     <%= stylesheet_link_tag 'application', media: 'all' %>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
-    <%= yield %>
+    <section class="section">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </section>
   </body>
 </html>

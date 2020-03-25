@@ -1,0 +1,23 @@
+<div class="content">
+
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title"> <%= function.name %> </p>
+
+      <%= link_to edit_function_path(function), class: 'card-header-icon' do %>
+        <span class="icon"> <i class="fas fa-edit"></i> </span>
+      <% end %>
+
+      <%= link_to function, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-header-icon has-text-danger' do %>
+        <span class="icon"> <i class="fas fa-trash"></i> </span>
+      <% end %>
+    </header>
+
+    <div class="card-content">
+      <%= simple_format function.usage %>
+    </div>
+
+    <%= render_code function.code %>
+  </div>
+
+</div>

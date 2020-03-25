@@ -1,0 +1,35 @@
+<%= form_with(model: function, local: true, html: { class: 'form' }) do |form| %>
+
+  <% if function.errors.any? %>
+    <div class="notification is-danger content">
+      <%= pluralize(function.errors.count, "error") %> prohibited this function from being saved:
+
+      <ul>
+        <% function.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, class: :label %>
+    <div class="control"> <%= form.text_field :name, class: :input %> </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :usage, class: :label %>
+    <div class="control"> <%= form.text_area :usage, rows: 5, class: :textarea %> </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :code, class: :label %>
+    <div class="control"> <%= form.text_area :code, rows: 20, class: :textarea %> </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <%= form.submit class: 'button is-link' %>
+    </div>
+  </div>
+<% end %>
