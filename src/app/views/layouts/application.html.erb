@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="has-navbar-fixed-top">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,10 +16,14 @@
   </head>
 
   <body>
-    <section class="section">
-      <div class="container">
-        <%= yield %>
-      </div>
-    </section>
+    <%= render 'layouts/navbar' %>
+      <section class="section">
+
+        <div class="columns">
+          <div class="column is-one-fifth"> <%= render 'layouts/menu' %> </div>
+          <div class="column"> <%= yield %> </div>
+        </div>
+
+      </section>
   </body>
 </html>

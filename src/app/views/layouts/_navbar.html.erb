@@ -1,0 +1,27 @@
+<nav class="navbar is-fixed-top">
+  <div class="navbar-brand">
+    <%= link_to functions_path, class: 'navbar-item' do %>
+      <%= image_tag 'logo.svg' %>
+    <% end %>
+
+    <%= link_to functions_path, class: 'navbar-item is-paddingless' do %>
+      <strong>RUBY FUNCTIONS</strong>
+    <% end %>
+  </div>
+
+  <div class="navbar-menu">
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <p class="control">
+
+          <%= link_to new_function_path, class: 'button' do %>
+            <span class="icon"> <i class="fas fa-plus"></i> </span>
+            <span>New function</span>
+          <% end %>
+
+        </p>
+      </div>
+    </div>
+  </div>
+</nav>
