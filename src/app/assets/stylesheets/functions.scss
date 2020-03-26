@@ -1,0 +1,6 @@
+.card{
+    max-height: 20rem;
+    &:focus{
+        max-height: inherit;
+    }
+}
