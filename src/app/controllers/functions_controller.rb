@@ -1,9 +1,12 @@
 class FunctionsController < ApplicationController
   before_action :set_function, only: %i[show edit update destroy]
+  LIMIT = 30
 
   # GET /functions
   def index
-    @functions = Function.all
+    offset = params.fetch(:offset, 0).to_i
+    @functions = Function.limit(LIMIT).offset(offset).order(created_at: :desc).all
+    @next = offset + LIMIT if @functions.count == LIMIT
   end
 
   # GET /functions/1
