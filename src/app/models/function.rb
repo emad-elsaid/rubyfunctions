@@ -1,5 +1,5 @@
 class Function < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, format: { with: /\A[0-9a-z_]+\z/i }
   validates :usage, presence: true
   validates :code, presence: true
 
