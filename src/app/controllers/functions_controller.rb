@@ -43,7 +43,7 @@ class FunctionsController < ApplicationController
   # DELETE /functions/1
   def destroy
     @function.destroy
-    redirect_to functions_url, notice: 'Function was successfully destroyed.'
+    redirect_to functions_url, notice: 'Function was successfully deleted.'
   end
 
   private
