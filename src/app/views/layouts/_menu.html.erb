@@ -1,3 +1,25 @@
+<% if current_user %>
+<div class="card m-b-md is-shadowless">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <%= image_tag user_image_url(current_user) %>
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4">
+          <%= current_user.name %>
+        </p>
+        <p class="subtitle is-6">
+          @<%= current_user.username %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
 <aside class="menu">
   <p class="menu-label"> General </p>
 

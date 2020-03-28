@@ -12,16 +12,32 @@
   <div class="navbar-menu">
 
     <div class="navbar-end">
+
       <div class="navbar-item">
-        <p class="control">
+        <div class="control">
+
+        <% if current_user %>
 
           <%= link_to new_function_path, class: 'button' do %>
             <span class="icon"> <i class="fas fa-plus"></i> </span>
             <span>New function</span>
           <% end %>
 
-        </p>
+          <%= link_to session_path, method: :delete, class: 'button has-text-danger' do %>
+            <span>Logout</span>
+            <span class="icon"> <i class="fas fa-power-off"></i> </span>
+          <% end %>
+        <% else %>
+
+          <%= link_to "https://github.com/login/oauth/authorize?client_id=#{ENV["GITHUB_CLIENT_ID"]}", class: 'button' do %>
+            <span class="icon"> <i class="fab fa-github"></i> </span>
+            <span>Login with Github</span>
+          <% end %>
+
+        <% end %>
+        </div>
       </div>
+
     </div>
   </div>
 </nav>
