@@ -1,60 +1,70 @@
 class FunctionsController < ApplicationController
+  before_action :set_user
   before_action :set_function, only: %i[show edit update destroy]
+  before_action :check_permission, only: %i[show edit update destroy]
+
   LIMIT = 30
 
-  # GET /functions
   def index
+    @function = @user.functions.new
+    check_permission
+
     offset = params.fetch(:offset, 0).to_i
-    @functions = Function.limit(LIMIT).offset(offset).order(created_at: :desc).all
+    @functions = @user.functions.limit(LIMIT).offset(offset).order(created_at: :desc).all
     @next = offset + LIMIT if @functions.count == LIMIT
   end
 
-  # GET /functions/1
   def show; end
 
   # GET /functions/new
   def new
-    @function = Function.new
+    @function = @user.functions.new
+    check_permission
   end
 
-  # GET /functions/1/edit
   def edit; end
 
-  # POST /functions
   def create
-    @function = Function.new(function_params)
+    @function = @user.functions.new(function_params)
+    check_permission
 
     if @function.save
-      redirect_to @function, notice: 'Function was successfully created.'
+      redirect_to [@user, @function], notice: 'Function was successfully created.'
     else
       render :new
     end
   end
 
-  # PATCH/PUT /functions/1
   def update
     if @function.update(function_params)
-      redirect_to @function, notice: 'Function was successfully updated.'
+      redirect_to [@user, @function], notice: 'Function was successfully updated.'
     else
       render :edit
     end
   end
 
-  # DELETE /functions/1
   def destroy
     @function.destroy
-    redirect_to functions_url, notice: 'Function was successfully deleted.'
+    redirect_to user_functions_url(@user), notice: 'Function was successfully deleted.'
   end
 
   private
 
+  def set_user
+    @user = User.from_param(params[:user_id]) || raise(ActiveRecord::RecordNotFound)
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_function
-    @function = Function.from_param(params[:id])
+    @function = @user.functions.from_param(params[:id]) || raise(ActiveRecord::RecordNotFound)
   end
 
   # Only allow a trusted parameter "white list" through.
   def function_params
     params.require(:function).permit(:name, :usage, :code)
+  end
+
+  def check_permission
+    raise Unauthorized unless can?(current_user, @function, action_name.to_sym)
   end
 end

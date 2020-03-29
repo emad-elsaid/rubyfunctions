@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :functions
+  resources :users, only: [] do
+    resources :functions
+  end
+
   resource :github, only: [:new]
   resource :session, only: [:destroy]
+  get 'timelines/latest', to: 'timelines#latest'
 
-  root to: 'functions#index'
+  root to: 'timelines#latest'
 end

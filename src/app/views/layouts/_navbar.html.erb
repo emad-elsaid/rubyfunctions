@@ -1,10 +1,10 @@
 <nav class="navbar is-fixed-top">
   <div class="navbar-brand">
-    <%= link_to functions_path, class: 'navbar-item' do %>
+    <%= link_to root_path, class: 'navbar-item' do %>
       <%= image_tag 'logo.svg' %>
     <% end %>
 
-    <%= link_to functions_path, class: 'navbar-item is-paddingless' do %>
+    <%= link_to root_path, class: 'navbar-item is-paddingless' do %>
       <strong>RUBY FUNCTIONS</strong>
     <% end %>
   </div>
@@ -12,15 +12,33 @@
   <div class="navbar-menu">
 
     <div class="navbar-end">
+      <% if current_user %>
+        <div class="navbar-item">
 
-      <div class="navbar-item">
+          <div class="media button">
+            <div class="media-content">
+              <%= link_to current_user.name, user_functions_path(current_user) %>
+            </div>
+            <div class="media-right">
+              <figure class="image is-24x24">
+                <%= link_to user_functions_path(current_user) do %>
+                  <%= image_tag user_image_url(current_user) %>
+                <% end %>
+              </figure>
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+
+        <div class="navbar-item">
         <div class="control">
 
         <% if current_user %>
 
-          <%= link_to new_function_path, class: 'button' do %>
-            <span class="icon"> <i class="fas fa-plus"></i> </span>
+          <%= link_to new_user_function_path(current_user), class: 'button is-link' do %>
             <span>New function</span>
+            <span class="icon"> <i class="fas fa-plus"></i> </span>
           <% end %>
 
           <%= link_to session_path, method: :delete, class: 'button has-text-danger' do %>

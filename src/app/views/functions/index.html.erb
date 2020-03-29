@@ -1,4 +1,14 @@
+<%= render 'users/user_card', user: @user %>
+<%= render 'functions', functions: @functions, user: @user %>
 
-<h1 class="title">My Functions</h1>
 
-<%= render 'functions' %>
+<% if @user.functions.count == 0 && @user != current_user %>
+  <div class="notification is-success content">
+    <%= @user.name %> didn't publish any functions yet.
+  </div>
+<% end %>
+
+<% if @user.functions.count == 0 && @user == current_user %>
+  <%= render 'common/concept' %>
+</div>
+<% end %>

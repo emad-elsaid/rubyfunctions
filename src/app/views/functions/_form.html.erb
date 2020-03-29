@@ -1,4 +1,4 @@
-<%= form_with(model: function, local: true, html: { class: 'form' }) do |form| %>
+<%= form_with(model: function, url: [user, function], local: true, html: { class: 'form' }) do |form| %>
 
   <% if function.errors.any? %>
     <div class="notification is-danger content">

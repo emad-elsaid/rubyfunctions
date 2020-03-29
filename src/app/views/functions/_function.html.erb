@@ -1,19 +1,54 @@
-<div class="card is-clipped m-b-md" tabindex="0">
+<% full ||= false %>
+
+<div class="card <%= 'is-clipped' unless full %> m-b-md" tabindex="0">
   <header class="card-header">
-    <p class="card-header-title"> <%= function.name %> </p>
+    <div class="card-header-title">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-48x48">
+            <%= link_to user_functions_path(function.user) do %>
+              <%= image_tag user_image_url(function.user), class: 'is-rounded' %>
+            <% end %>
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-5">
+            <%= link_to user_functions_path(function.user) do %>
+              <%= function.user.name %>
+            <% end %>
+          </p>
+          <p class="subtitle is-6">
+            <%= link_to [function.user, function] do %>
+              <%= function.name %> <br/>
+            <% end %>
+            <small class="has-text-grey-light is-small"><%= function.created_at.to_s(:long) %></small>
+          </p>
+        </div>
+      </div>
+    </div>
 
-    <%= link_to edit_function_path(function), class: 'card-header-icon' do %>
+    <% unless full %>
+      <div class="card-header-icon">
+        <%= link_to [function.user, function], class: 'button is-link' do %>
+          <span> Show code </span>
+          <span class="icon"> <i class="fas fa-code"></i> </span>
+        <% end %>
+      </div>
+    <% end %>
+
+
+    <%= link_to edit_user_function_path(function.user, function), class: 'card-header-icon' do %>
       <span class="icon"> <i class="fas fa-edit"></i> </span>
-    <% end %>
+    <% end if can?(current_user, function, :edit) %>
 
-    <%= link_to function, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-header-icon has-text-danger' do %>
+    <%= link_to [function.user, function], method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-header-icon has-text-danger' do %>
       <span class="icon"> <i class="fas fa-trash"></i> </span>
-    <% end %>
+    <% end if can?(current_user, function, :destroy) %>
   </header>
 
   <div class="card-content">
     <%= simple_format function.usage %>
   </div>
 
-  <%= render_code function.code %>
+  <%= render_code function.code if full %>
 </div>

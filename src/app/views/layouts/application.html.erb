@@ -18,14 +18,10 @@
   <body>
     <%= render 'layouts/navbar' %>
       <section class="section">
-
-        <div class="columns">
-          <div class="column is-one-fifth"> <%= render 'layouts/menu' %> </div>
-          <div class="column">
-            <%= render 'layouts/notice', notice: notice if notice %>
-            <%= render 'layouts/alert', alert: alert if alert %>
-            <%= yield %>
-          </div>
+        <div class="container">
+          <%= render 'layouts/notice', notice: notice if notice %>
+          <%= render 'layouts/alert', alert: alert if alert %>
+          <%= yield %>
         </div>
 
       </section>
