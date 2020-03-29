@@ -17,4 +17,7 @@ test:
 
 production:
   <<: *default
-  database: rubyfunctions_production
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
