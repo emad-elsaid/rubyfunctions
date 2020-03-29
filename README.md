@@ -16,3 +16,44 @@ and use it if we need to.
 2. Show your creativity using just ruby to deliver something useful, how far can you get with just that?
 3. We can learn a lot from each other just by sharing useful functions we write.
 4. You get fast feedback on a small snippet of code.
+
+# Prerequisite
+
+1. Ruby 2.6.3
+1. Yarn
+1. Postgres server
+
+# Setting up the project
+
+1. cd to `src`
+1. Create a github application for github login feature from [here](https://github.com/settings/developers) and set the callback URL to `http://localhost:3000/github/new`
+1. copy `.env.sample` to `.env` and fill in the non-production variables and remove the rest.
+1. review `config/database.yml` development section to make sure it connects to your postgres server
+1. run `rails db:setup`
+1. make sure `rspec` passes
+1. run the server with `rails s`
+1. have run developing your feature
+
+# Things the project is trying to avoid
+
+1. Having unncessary dependencies
+1. Javascript
+1. Saving user emails or access tokens
+1. Uploading files
+
+# How to contibute
+
+1. Fork this repo
+1. Clone the fork to your machine
+1. Open an issue with the your idea and how you're gonna solve it
+1. Agree on a final solution to your idea and start implementing it
+1. Create a new branch and commit your changes
+1. Open a pull request linking to the issue
+
+
+# Quality guidelines
+
+1. Write good and readable tests
+1. Make sure existing specs passes with `rspec` command
+1. Make sure rubocop passes with `rubocop` command
+1. Try to be as minimal as possible
