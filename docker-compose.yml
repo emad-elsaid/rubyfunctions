@@ -15,8 +15,6 @@ services:
       - db
     links:
       - db
-    volumes:
-      - /root/data/rubyfunctions/uploads:/app/public/system
     restart: always
     ports:
       - '127.0.0.1:9000:3000'
