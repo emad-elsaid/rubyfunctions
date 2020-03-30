@@ -1,0 +1,22 @@
+FROM ruby:2.6.3-slim
+ENV LANG=C.UTF-8
+RUN apt update && apt install -qq -y build-essential nodejs libpq-dev postgresql-client npm --fix-missing --no-install-recommends
+RUN gem install bundler
+RUN npm install --global yarn
+
+ENV app /app
+RUN mkdir -p $app
+ENV INSTALL_PATH $app
+ENV RAILS_ENV production
+
+COPY Gemfile* /tmp/
+WORKDIR /tmp
+RUN bundle install --without="development test" -j8
+
+WORKDIR $app
+ADD . $app
+RUN bundle outdated --strict
+RUN mkdir -p tmp/pids
+RUN bundle exec rake assets:precompile
+
+CMD bundle exec rails server
