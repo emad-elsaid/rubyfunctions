@@ -11,7 +11,8 @@ module PermissionsConcern
   def can?(user, model, action)
     case model
     when Function then function_can?(user, model, action)
-    else raise ObjectPermissionsMissing, model
+    when Comment then comment_can?(user, model, action)
+    else raise(ObjectPermissionsMissing, model.class.name)
     end
   end
 
@@ -20,7 +21,15 @@ module PermissionsConcern
   def function_can?(user, model, action)
     case action
     when :index, :show then true
-    when :new, :create, :edit, :update, :destroy then user == model.user
+    when :new, :create, :edit, :update, :destroy then user && user == model.user
+    end
+  end
+
+  def comment_can?(user, model, action)
+    case action
+    when :index, :show then true
+    when :new, :create, :edit, :update then user && user == model.user
+    when :destroy then user && (user == model.user || user == model.function.user)
     end
   end
 end

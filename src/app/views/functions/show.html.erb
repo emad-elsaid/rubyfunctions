@@ -1,1 +1,5 @@
-<%= render @function, user: @user, full: true %>
+<%= render @function, full: true %>
+
+<%= render 'comments/form', comment: @comment if can?(current_user, @comment, :create) %>
+
+<%= render @function.comments %>
