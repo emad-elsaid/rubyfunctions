@@ -29,7 +29,7 @@ module PermissionsConcern
     case action
     when :index, :show then true
     when :new, :create, :edit, :update then user && user == model.user
-    when :destroy then user && (user == model.user || user == model.function.user)
+    when :destroy then user && [model.user, model.function.user].include?(user)
     end
   end
 end
