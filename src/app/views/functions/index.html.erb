@@ -1,3 +1,5 @@
+<%= content_for :title, @user.name %>
+
 <%= render 'users/user_card', user: @user %>
 <%= render 'functions', functions: @functions, user: @user %>
 
