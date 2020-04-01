@@ -1,1 +1,5 @@
 @import 'codemirror/lib/codemirror.css';
+.CodeMirror {
+    border: 1px solid #eee;
+    height: auto;
+}
