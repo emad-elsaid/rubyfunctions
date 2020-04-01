@@ -12,7 +12,7 @@ module PermissionsConcern
     case model
     when Function then function_can?(user, model, action)
     when Comment then comment_can?(user, model, action)
-    else raise(ObjectPermissionsMissing, model.class.name)
+    else raise ObjectPermissionsMissing, model
     end
   end
 
