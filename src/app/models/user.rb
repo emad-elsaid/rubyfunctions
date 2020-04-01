@@ -17,7 +17,7 @@ class User < ApplicationRecord
     find_or_create_by!(github_id: github_user['id']) do |new_user|
       username = github_user['login']
       new_user.username = exists?(github_id: username) ? SecureRandom.uuid : username
-      new_user.name = github_user['name']
+      new_user.name = github_user['name'] || username
     end
   end
 end
