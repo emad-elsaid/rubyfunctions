@@ -1,5 +1,9 @@
 module ApplicationHelper
   def title
-    Array(content_for(:title)).prepend('Ruby Functions').flatten().join(' - ')
+    if content_for?(:title)
+      (content_for :title).prepend("Ruby Functions - ")
+    else
+      "Ruby Functions"
+    end
   end
 end
