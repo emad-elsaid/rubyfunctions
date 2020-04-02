@@ -1,0 +1,3 @@
+<%= render saves.map(&:function) %>
+
+<%= link_to 'Load More', user_saves_path(user, offset: @next), remote: true, class: 'button is-fullwidth more' if @next %>
