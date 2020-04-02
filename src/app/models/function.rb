@@ -6,6 +6,8 @@ class Function < ApplicationRecord
 
   belongs_to :user
 
+  has_many :comments, dependent: :destroy
+
   def to_param
     name
   end

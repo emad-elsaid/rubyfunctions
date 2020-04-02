@@ -14,7 +14,9 @@ class FunctionsController < ApplicationController
     @next = offset + LIMIT if @functions.count == LIMIT
   end
 
-  def show; end
+  def show
+    @comment = Comment.new(function: @function, user: current_user)
+  end
 
   # GET /functions/new
   def new

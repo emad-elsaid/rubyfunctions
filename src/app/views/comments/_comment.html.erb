@@ -1,0 +1,27 @@
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <%= image_tag user_image_url(comment.user), class: 'is-rounded' %>
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <%= link_to user_functions_path(comment.user) do %>
+            <strong><%= comment.user.name %></strong>
+          <% end %>
+          <small>@<%= comment.user.username %></small>
+          <small><%= comment.created_at.to_s(:long) %></small>
+
+          <%= link_to [comment.function.user, comment.function, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'has-text-danger' do %>
+            <small><span class="icon"> <i class="fas fa-trash"></i> </span></small>
+          <% end if can?(current_user, comment, :destroy) %>
+
+          <br>
+          <%= simple_format comment.content %>
+        </p>
+      </div>
+    </div>
+  </article>
+</div>
