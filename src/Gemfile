@@ -9,7 +9,7 @@ gem 'pg'
 gem 'puma', '~> 4.3'
 gem 'rest-client'
 gem 'rouge'
-gem 'sass-rails', '~> 5'
+gem 'sass-rails', '~> 6'
 gem 'webpacker', '~> 4.0'
 
 group :development, :test do
