@@ -1,0 +1,35 @@
+name: Ruby
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    env:
+      RAILS_ENV: test
+    
+    services:
+      postgres:
+        image: postgres:latest
+        ports:
+        - 5432:5432
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby 2.6
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
+    - name: Build and test
+      run: |
+        sudo apt-get install libpq-dev
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec rails db:setup 
+        bundle exec rspec
+        bundle exec rubocop
