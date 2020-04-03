@@ -1,12 +1,12 @@
 class Function < ApplicationRecord
-  validates :name, presence: true, uniqueness: { scope: :user_id }
+  validates :name, presence: true, uniqueness: { scope: :user_id }, format: { with: /\A[0-9a-z_]+\z/i }
   validates :usage, presence: true
   validates :code, presence: true
   validates :user, presence: true
 
   belongs_to :user
 
-  before_validation :function_name
+  before_validation :validate_function_name
 
   def to_param
     name
@@ -19,20 +19,26 @@ class Function < ApplicationRecord
   private
 
   def find_first_function(ast)
-    return ast.children.first.to_s if ast.respond_to?('type') && ast.type == :DEFN
+    return ast.children.first.to_s if ast.instance_of?(RubyVM::AbstractSyntaxTree::Node) && ast.type == :DEFN
 
-    return unless ast.respond_to?('children')
+    return unless ast.instance_of?(RubyVM::AbstractSyntaxTree::Node)
 
     ast.children.each do |child|
-      func_name = find_first_function(child)
-      return func_name if func_name
+      node = find_first_function(child)
+      return node if node
     end
+    nil
   end
 
-  def function_name
-    self.name = find_first_function(RubyVM::AbstractSyntaxTree.parse(code))
+  def validate_function_name
+    extract_function_name
   rescue SyntaxError
-    errors.add(:has_syntax_error, 'code has syntax error')
-    throw(:abort)
+    self.name = nil
+    errors.add(:code, :syntax_error)
+  end
+
+  def extract_function_name
+    ast = RubyVM::AbstractSyntaxTree.parse(code.to_s)
+    self.name = find_first_function(ast)
   end
 end
