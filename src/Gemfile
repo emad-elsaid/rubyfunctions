@@ -24,8 +24,8 @@ group :development do
 end
 
 group :test do
-  gem 'faker', '~> 2.11.0'
-  gem 'shoulda-matchers', '~> 4.3'
+  gem 'faker'
+  gem 'shoulda-matchers'
 end
 
 group :production do
