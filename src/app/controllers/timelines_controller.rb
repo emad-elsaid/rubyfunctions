@@ -1,4 +1,5 @@
 class TimelinesController < ApplicationController
+  caches_page :latest
   LIMIT = 30
 
   def latest
