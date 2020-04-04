@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   db:
     image: "postgres:12.2"
@@ -9,6 +9,12 @@ services:
       - '5432:5432'
     volumes:
       - rubyfunctions_db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      
   web:
     build: src/
     entrypoint: /app/scripts/entrypoint.sh
