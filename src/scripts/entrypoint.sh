@@ -5,7 +5,7 @@ kill -9 $(cat /app/tmp/pids/server.pid)
 rm -rf /app/tmp/pids/server.pid
 yarn install --check-files
 
-bundle config set with 'development'
+bundle config set with 'development test'
 bundle install
 
 bundle exec rails db:exists || bundle exec rails db:setup
