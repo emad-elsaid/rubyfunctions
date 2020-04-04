@@ -1,5 +1,10 @@
 name: Ruby
 
+env:
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: ""
+  POSTGRES_DB: postgres
+
 on:
   push:
     branches: [ master ]
@@ -9,10 +14,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     env:
       RAILS_ENV: test
-    
+
     services:
       postgres:
         image: postgres:latest
@@ -31,6 +36,6 @@ jobs:
         sudo apt-get install libpq-dev
         gem install bundler
         bundle install --jobs 4 --retry 3
-        bundle exec rails db:setup 
+        bundle exec rails db:setup
         bundle exec rspec
         bundle exec rubocop
