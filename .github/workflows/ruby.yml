@@ -29,8 +29,7 @@ jobs:
       - name: Build and run tests
         env:
           RAILS_ENV: test
-          POSTGRES_HOST: db
-        run: |
+        run:
           sudo apt-get -yqq install libpq-dev
           gem install bundler
           cd src
