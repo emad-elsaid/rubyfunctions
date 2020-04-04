@@ -8,7 +8,7 @@ class SavesController < ApplicationController
   def index
     offset = params.fetch(:offset, 0).to_i
     @saves = @user.saves.includes(:function).limit(LIMIT).offset(offset).order(created_at: :desc).all
-    @next = offset + LIMIT if @user.saves.count == LIMIT
+    @next = offset + LIMIT if @saves.count == LIMIT
   end
 
   def create
