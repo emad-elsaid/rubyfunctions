@@ -3,10 +3,10 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV.fetch('POSTGRES_USER', 'postgres') %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  password: <%= ENV.fetch('POSTGRES_PASSWORD', '') %>
   host: <%= ENV.fetch('POSTGRES_HOST', 'localhost') %>
-  socket: <%= ENV.fetch('POSTGRES_PORT') { 5432 } %> 
-  port: <%= ENV.fetch('POSTGRES_PORT') { 5432 } %> 
+  socket: <%= ENV.fetch('POSTGRES_PORT', 5432) %> 
+  port: <%= ENV.fetch('POSTGRES_PORT', 5432) %> 
   timeout: 5000
 
 development:
