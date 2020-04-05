@@ -1,12 +1,17 @@
 FactoryBot.define do
   factory :function do
-    name { Faker::Alphanumeric.alphanumeric(number: 10) }
-    usage  { Faker::Lorem.paragraph }
-    code { Faker::Lorem.paragraph }
+    usage { Faker::Lorem.paragraph }
+    sequence(:code) { |n| "def foo#{n}; end" }
     association :user
 
     trait :invalid_name do
-      name { nil }
+      sequence(:code) { |n| "def #{n}foo; end" }
+    end
+
+    after(:build) do |function|
+      function.send(:extract_function_name)
+    rescue SyntaxError
+      nil
     end
   end
 end

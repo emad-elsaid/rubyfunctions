@@ -63,7 +63,7 @@ class FunctionsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def function_params
-    params.require(:function).permit(:name, :usage, :code)
+    params.require(:function).permit(:usage, :code)
   end
 
   def check_permission

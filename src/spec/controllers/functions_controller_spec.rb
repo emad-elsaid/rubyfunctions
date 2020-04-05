@@ -62,7 +62,8 @@ RSpec.describe FunctionsController, type: :controller do
 
   describe 'PUT #update' do
     context 'with valid params' do
-      let(:new_attributes) { build(:function).attributes }
+      let(:function) { build(:function) }
+      let(:new_attributes) { function.attributes }
 
       it 'updates the requested function' do
         function = user.functions.create! valid_attributes
