@@ -1,0 +1,19 @@
+<div class="card-footer">
+  <% if liked?(function, current_user) %>
+
+    <%= link_to user_function_like_path(user_id: function.user, function_id: function), class: 'card-footer-item', method: :delete do  %>
+      <span class="icon">
+        <i class="fas fa-thumbs-up"></i> Like
+      </span>
+    <% end %>
+
+  <% else %>
+
+    <%= link_to user_function_like_path(user_id: function.user, function_id: function), class: 'card-footer-item has-text-grey', method: :post do  %>
+      <span class="icon">
+        <i class="far fa-thumbs-up"></i> Like
+      </span>
+    <% end %>
+
+  <% end %>
+</div>

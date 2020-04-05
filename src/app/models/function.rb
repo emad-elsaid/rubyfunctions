@@ -9,6 +9,7 @@ class Function < ApplicationRecord
   before_validation :validate_function_name
 
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy, as: :likeable
 
   def to_param
     name

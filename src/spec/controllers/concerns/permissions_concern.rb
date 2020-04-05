@@ -86,4 +86,30 @@ shared_examples_for 'PermissionsConcern' do
       it { expect(controller.can?(user, comment, :destroy)).to be_falsey }
     end
   end
+
+  describe 'Like' do
+    context 'for a guest' do
+      let(:like) { create :like }
+      let(:user) { nil }
+
+      it { expect(controller.can?(user, like, :create)).to be_falsey }
+      it { expect(controller.can?(user, like, :destroy)).to be_falsey }
+    end
+
+    context 'for a user' do
+      let(:like) { create :like }
+      let(:user) { like.user }
+
+      it { expect(controller.can?(user, like, :create)).to be_truthy }
+      it { expect(controller.can?(user, like, :destroy)).to be_truthy }
+    end
+
+    context 'for a user that does not own the like' do
+      let(:like) { create :like }
+      let(:user) { create :user }
+
+      it { expect(controller.can?(user, like, :create)).to be_falsey }
+      it { expect(controller.can?(user, like, :destroy)).to be_falsey }
+    end
+  end
 end

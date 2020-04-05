@@ -50,4 +50,12 @@
   </div>
 
   <%= render_code function.code if full %>
+
+  <div class="card-content">
+    <i class="fas fa-thumbs-up"></i> <%= function.likes.count %> Likes
+    and
+    <i class="fas fa-comment"></i> <%= function.comments.count %> Comments on this function
+  </div>
+
+  <%= render 'function_footer', function: function if full %>
 </div>

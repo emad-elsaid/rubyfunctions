@@ -8,6 +8,10 @@ Style/HashTransformKeys:
   Enabled: true
 Style/HashTransformValues:
   Enabled: true
+Lint/StructNewOverride:
+  Enabled: true
+Lint/RaiseException:
+  Enabled: true
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 Metrics/BlockLength:
