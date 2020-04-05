@@ -7,7 +7,7 @@ class Function < ApplicationRecord
   belongs_to :user
 
   before_validation :validate_function_name
-  
+
   has_many :comments, dependent: :destroy
 
   def to_param

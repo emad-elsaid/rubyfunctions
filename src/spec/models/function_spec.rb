@@ -1,10 +1,9 @@
 require 'rails_helper'
 
-
 RSpec.describe Function, type: :model do
   subject { create :function }
 
-  def generate_name (code)
+  def generate_name(code)
     subject.code = code
     subject.validate
   end
@@ -14,7 +13,6 @@ RSpec.describe Function, type: :model do
       generate_name 'def;end'
       expect(subject.errors[:name]).to be_present
     end
-
 
     it 'must be unique' do
       duplicate = subject.dup
@@ -28,7 +26,7 @@ RSpec.describe Function, type: :model do
     expect(subject).to be_valid
   end
 
-  it 'allow to have number in it' do 
+  it 'allow to have number in it' do
     generate_name 'def foo1; end'
     expect(subject).to be_valid
   end
@@ -47,7 +45,6 @@ RSpec.describe Function, type: :model do
     generate_name 'def عربي; x = 1; end'
     expect(subject).to_not be_valid
   end
-
 
   it { is_expected.to validate_presence_of :usage }
   it { is_expected.to validate_presence_of :code }
