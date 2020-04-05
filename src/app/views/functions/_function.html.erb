@@ -27,6 +27,14 @@
       </div>
     </div>
 
+    <%= link_to edit_user_function_path(function.user, function), class: 'card-header-icon' do %>
+      <span class="icon"> <i class="fas fa-edit"></i> </span>
+    <% end if can?(current_user, function, :edit) %>
+
+    <%= link_to [function.user, function], method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-header-icon has-text-danger' do %>
+      <span class="icon"> <i class="fas fa-trash"></i> </span>
+    <% end if can?(current_user, function, :destroy) %>
+
     <% unless full %>
       <div class="card-header-icon">
         <%= link_to [function.user, function], class: 'button is-link' do %>
@@ -35,15 +43,6 @@
         <% end %>
       </div>
     <% end %>
-
-
-    <%= link_to edit_user_function_path(function.user, function), class: 'card-header-icon' do %>
-      <span class="icon"> <i class="fas fa-edit"></i> </span>
-    <% end if can?(current_user, function, :edit) %>
-
-    <%= link_to [function.user, function], method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-header-icon has-text-danger' do %>
-      <span class="icon"> <i class="fas fa-trash"></i> </span>
-    <% end if can?(current_user, function, :destroy) %>
   </header>
 
   <div class="card-content">

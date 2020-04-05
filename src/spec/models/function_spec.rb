@@ -48,6 +48,7 @@ RSpec.describe Function, type: :model do
     expect(subject).to_not be_valid
   end
 
+
   it { is_expected.to validate_presence_of :usage }
   it { is_expected.to validate_presence_of :code }
   it { is_expected.to validate_presence_of :user }

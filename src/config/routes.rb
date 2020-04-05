@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :users, only: [] do
-    resources :functions
+    resources :functions do
+      resources :comments, only: %i[create destroy]
+    end
   end
 
   resource :github, only: [:new]

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :github_id, presence: true, uniqueness: true
 
   has_many :functions, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def to_param
     username

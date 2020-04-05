@@ -1,5 +1,5 @@
 class Function < ApplicationRecord
-  validates :name, presence: true, uniqueness: { scope: :user_id }, format: { with: /\A[0-9a-z_]+\z/i }
+  validates :name, presence: true, uniqueness: { scope: :user_id }, format: { with: /\A[0-9a-z_]+[\?!]?\z/i }
   validates :usage, presence: true
   validates :code, presence: true
   validates :user, presence: true
@@ -7,6 +7,8 @@ class Function < ApplicationRecord
   belongs_to :user
 
   before_validation :validate_function_name
+  
+  has_many :comments, dependent: :destroy
 
   def to_param
     name
