@@ -35,7 +35,6 @@ class Function < ApplicationRecord
   def validate_function_name
     extract_function_name
   rescue SyntaxError
-    self.name = nil
     errors.add(:code, :syntax_error)
   end
 

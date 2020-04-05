@@ -4,6 +4,7 @@ RSpec.describe Function, type: :model do
   subject { create :function }
 
   def generate_name(code)
+    subject.name = nil
     subject.code = code
     subject.validate
   end
