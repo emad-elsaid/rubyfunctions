@@ -8,35 +8,35 @@ module PermissionsConcern
     helper_method :can?
   end
 
-  def can?(user, model, action)
+  def can?(model, action)
     case model
-    when Function then function_can?(user, model, action)
-    when Comment then comment_can?(user, model, action)
-    when Like then like_can?(user, model, action)
+    when Function then function_can?(model, action)
+    when Comment then comment_can?(model, action)
+    when Like then like_can?(model, action)
     else raise ObjectPermissionsMissing, model
     end
   end
 
   private
 
-  def function_can?(user, model, action)
+  def function_can?(model, action)
     case action
     when :index, :show then true
-    when :new, :create, :edit, :update, :destroy then user && user == model.user
+    when :new, :create, :edit, :update, :destroy then current_user && current_user == model.user
     end
   end
 
-  def comment_can?(user, model, action)
+  def comment_can?(model, action)
     case action
     when :index, :show then true
-    when :new, :create, :edit, :update then user && user == model.user
-    when :destroy then user && [model.user, model.function.user].include?(user)
+    when :new, :create, :edit, :update then current_user && current_user == model.user
+    when :destroy then current_user && [model.user, model.function.user].include?(current_user)
     end
   end
 
-  def like_can?(user, model, action)
+  def like_can?(model, action)
     case action
-    when :create, :destroy then user && user == model.user
+    when :create, :destroy then current_user && current_user == model.user
     end
   end
 end
