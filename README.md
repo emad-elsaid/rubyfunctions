@@ -42,6 +42,27 @@ and use it if we need to.
 1. run the server with `rails s`
 1. have run developing your feature
 
+
+# Using Docker
+
+- clone **.env.sample** file, and fill in the non-production variables and remove the rest.
+```sh
+$ cp src/.env.sample src/.env
+```
+
+- up and build project in docker
+```
+$ docker-compose -f docker-compose-dev.yml up --build
+```
+- run specs
+```
+$ docker-compose -f docker-compose-dev.yml exec web rspec
+```
+- logging into web container
+```
+$ docker-compose -f docker-compose-dev.yml exec web bash
+```
+
 # Things the project is trying to avoid
 
 1. Having unncessary dependencies
