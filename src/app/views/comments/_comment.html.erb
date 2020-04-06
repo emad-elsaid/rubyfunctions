@@ -16,7 +16,7 @@
 
           <%= link_to [comment.function.user, comment.function, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'has-text-danger' do %>
             <small><span class="icon"> <i class="fas fa-trash"></i> </span></small>
-          <% end if can?(current_user, comment, :destroy) %>
+          <% end if can?(comment, :destroy) %>
 
           <br>
           <%= simple_format comment.content %>

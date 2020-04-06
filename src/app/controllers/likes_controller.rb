@@ -4,7 +4,7 @@ class LikesController < ApplicationController
 
   def create
     @like = @function.likes.new(user: current_user)
-    raise Unauthorized unless can?(current_user, @like, action_name.to_sym)
+    raise Unauthorized unless can?(@like, action_name.to_sym)
 
     @like.save
     redirect_back fallback_location: [@user, @function]
@@ -12,7 +12,7 @@ class LikesController < ApplicationController
 
   def destroy
     @like = @function.likes.find_by(user: current_user) || raise(ActiveRecord::RecordNotFound)
-    raise Unauthorized unless can?(current_user, @like, action_name.to_sym)
+    raise Unauthorized unless can?(@like, action_name.to_sym)
 
     @like.destroy
     redirect_back fallback_location: [@user, @function]
