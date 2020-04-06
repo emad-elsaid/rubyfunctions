@@ -37,9 +37,31 @@ and use it if we need to.
 1. copy `.env.sample` to `.env` and fill in the non-production variables and remove the rest.
 1. make sure the variables in `.env` file is loaded to your shell, you can use [autoenv](https://github.com/inishchith/autoenv) for that
 1. review `config/database.yml` development section to make sure it connects to your postgres server
-1. from root project directory run `docker-compose -f docker-compose-dev.yml up --build`
+1. run `rails db:setup`
 1. make sure `rspec` passes
+1. run the server with `rails s`
 1. have run developing your feature
+
+
+# Using Docker
+
+- clone **.env.sample** file, and fill in the non-production variables and remove the rest.
+```sh
+$ cp src/.env.sample src/.env
+```
+
+- up and build project in docker
+```
+$ docker-compose -f docker-compose-dev.yml up --build
+```
+- run specs
+```
+$ docker-compose -f docker-compose-dev.yml exec web rspec
+```
+- logging into web container
+```
+$ docker-compose -f docker-compose-dev.yml exec web bash
+```
 
 # Things the project is trying to avoid
 
