@@ -12,6 +12,7 @@ module PermissionsConcern
     case model
     when Function then function_can?(user, model, action)
     when Comment then comment_can?(user, model, action)
+    when Like then like_can?(user, model, action)
     else raise ObjectPermissionsMissing, model
     end
   end
@@ -30,6 +31,12 @@ module PermissionsConcern
     when :index, :show then true
     when :new, :create, :edit, :update then user && user == model.user
     when :destroy then user && [model.user, model.function.user].include?(user)
+    end
+  end
+
+  def like_can?(user, model, action)
+    case action
+    when :create, :destroy then user && user == model.user
     end
   end
 end
