@@ -57,5 +57,5 @@
     <i class="fas fa-comment"></i> <%= function.comments.count %> Comments on this function
   </div>
 
-  <%= render 'function_footer', function: function if full %>
+  <%= render 'function_footer', function: function if current_user && full %>
 </div>
