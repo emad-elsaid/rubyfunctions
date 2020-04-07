@@ -37,6 +37,7 @@ jobs:
           RAILS_ENV: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: root
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         working-directory: ./src
         run: |
           sudo apt-get -yqq install libpq-dev
@@ -45,9 +46,3 @@ jobs:
           bundle exec rails db:prepare
           bundle exec rubocop
           bundle exec rspec
-      - name: Send code coverage
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: |
-          mv src/coverage .
-          bash <(curl -s https://codecov.io/bash)
