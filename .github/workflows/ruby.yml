@@ -49,5 +49,5 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
-          cd src
+          mv src/coverage .
           bash <(curl -s https://codecov.io/bash)
