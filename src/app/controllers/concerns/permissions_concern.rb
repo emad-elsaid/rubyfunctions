@@ -1,7 +1,6 @@
 module PermissionsConcern
   extend ActiveSupport::Concern
 
-  class Unauthorized < StandardError; end
   class ObjectPermissionsMissing < StandardError; end
 
   included do

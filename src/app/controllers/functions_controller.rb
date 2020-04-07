@@ -67,6 +67,6 @@ class FunctionsController < ApplicationController
   end
 
   def check_permission
-    raise Unauthorized unless can?(@function, action_name.to_sym)
+    raise UnauthorizedException unless can?(@function, action_name.to_sym)
   end
 end

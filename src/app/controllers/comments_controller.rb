@@ -39,6 +39,6 @@ class CommentsController < ApplicationController
   end
 
   def check_permission
-    raise Unauthorized unless can?(@comment, action_name.to_sym)
+    raise UnauthorizedException unless can?(@comment, action_name.to_sym)
   end
 end
