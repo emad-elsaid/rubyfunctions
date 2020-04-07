@@ -45,3 +45,8 @@ jobs:
           bundle exec rails db:prepare
           bundle exec rubocop
           bundle exec rspec
+      - name: Send code coverage
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: |
+          bash <(curl -s https://codecov.io/bash)
