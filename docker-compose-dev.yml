@@ -17,7 +17,7 @@ services:
       
   web:
     build: src/
-    entrypoint: /app/scripts/entrypoint.sh
+    entrypoint: /app/bin/entrypoint.sh
     volumes:
       - ./src/:/app
     depends_on:
