@@ -13,13 +13,13 @@
         </div>
         <div class="media-content">
           <p class="title is-5">
-            <%= link_to user_functions_path(function.user) do %>
-              <%= function.user.name %>
+            <%= link_to [function.user, function] do %>
+              <%= function.name %>
             <% end %>
           </p>
           <p class="subtitle is-6">
-            <%= link_to [function.user, function] do %>
-              <%= function.name %> <br/>
+            <%= link_to user_functions_path(function.user) do %>
+              <%= function.user.name %> <br/>
             <% end %>
             <small class="has-text-grey-light is-small"><%= function.created_at.to_s(:long) %></small>
           </p>
