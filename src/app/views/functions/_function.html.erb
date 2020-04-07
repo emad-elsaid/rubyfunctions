@@ -1,7 +1,7 @@
 <% full ||= false %>
 
 <div class="card <%= 'is-clipped' unless full %> m-b-md" tabindex="0">
-  <header class="card-header">
+  <header class="card-header is-shadowless">
     <div class="card-header-title">
       <div class="media">
         <div class="media-left">
@@ -19,9 +19,9 @@
           </p>
           <p class="subtitle is-6">
             <%= link_to user_functions_path(function.user) do %>
-              <%= function.user.name %> <br/>
+              <%= function.user.name %>
             <% end %>
-            <small class="has-text-grey-light is-small"><%= function.created_at.to_s(:long) %></small>
+            <small class="has-text-grey-light"> · @<%= function.user.username %> · <%= distance_of_time_in_words_to_now function.created_at %></small>
           </p>
         </div>
       </div>
@@ -51,10 +51,11 @@
 
   <%= render_code function.code if full %>
 
-  <div class="card-content">
-    <i class="fas fa-thumbs-up"></i> <%= function.likes.count %> Likes
-    and
-    <i class="fas fa-comment"></i> <%= function.comments.count %> Comments on this function
+  <div class="card-content has-text-grey-light">
+    <small>
+    <i class="fas fa-thumbs-up"></i> <%= function.likes.count %> ·
+    <i class="fas fa-comment"></i> <%= function.comments.count %>
+    </small>
   </div>
 
   <%= render 'function_footer', function: function if current_user && full %>

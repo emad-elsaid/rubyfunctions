@@ -11,8 +11,7 @@
           <%= link_to user_functions_path(comment.user) do %>
             <strong><%= comment.user.name %></strong>
           <% end %>
-          <small>@<%= comment.user.username %></small>
-          <small><%= comment.created_at.to_s(:long) %></small>
+          <small class="has-text-grey-light"> · @<%= comment.user.username %> · <%= distance_of_time_in_words_to_now comment.created_at %></small>
 
           <%= link_to [comment.function.user, comment.function, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'has-text-danger' do %>
             <small><span class="icon"> <i class="fas fa-trash"></i> </span></small>
