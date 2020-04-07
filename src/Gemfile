@@ -24,9 +24,9 @@ group :development do
 end
 
 group :test do
+  gem 'codecov', require: false
   gem 'faker'
   gem 'shoulda-matchers'
-  gem 'codecov', require: false
 end
 
 group :production do
