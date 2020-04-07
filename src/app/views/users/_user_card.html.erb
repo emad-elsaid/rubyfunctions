@@ -11,7 +11,9 @@
           <%= user.name %>
         </p>
         <p class="subtitle is-6">
-          @<%= user.username %>
+          <%= link_to user_github_account_url(user),  target: "_blank" do %>
+            @<%= user.username %>
+          <% end %>
         </p>
       </div>
     </div>
