@@ -1,6 +1,12 @@
 RUBY FUNCTIONS
 ==============
 
+[![View performance data on Skylight](https://badges.skylight.io/status/wwchw2UGlt0N.svg)](https://oss.skylight.io/app/applications/wwchw2UGlt0N)
+[![View performance data on Skylight](https://badges.skylight.io/problem/wwchw2UGlt0N.svg)](https://oss.skylight.io/app/applications/wwchw2UGlt0N)
+[![View performance data on Skylight](https://badges.skylight.io/typical/wwchw2UGlt0N.svg)](https://oss.skylight.io/app/applications/wwchw2UGlt0N)
+[![View performance data on Skylight](https://badges.skylight.io/rpm/wwchw2UGlt0N.svg)](https://oss.skylight.io/app/applications/wwchw2UGlt0N)
+[![codecov](https://codecov.io/gh/emad-elsaid/rubyfunctions/branch/master/graph/badge.svg)](https://codecov.io/gh/emad-elsaid/rubyfunctions)
+
 Here is the challenge:
 
 1. Write a useful Ruby function
@@ -86,12 +92,3 @@ $ docker-compose -f docker-compose-dev.yml exec web bash
 1. Make sure existing specs passes with `rspec` command
 1. Make sure rubocop passes with `rubocop` command
 1. Try to be as minimal as possible
-
-# Project depends on these third-party services
-
-1. Error reporting: https://Sentry.io
-1. Performance monitoring: https://Skylight.io [![View performance data on Skylight](https://badges.skylight.io/status/wwchw2UGlt0N.svg)](https://oss.skylight.io/app/applications/wwchw2UGlt0N)
-   1. Problem response: [![View performance data on Skylight](https://badges.skylight.io/problem/wwchw2UGlt0N.svg)](https://oss.skylight.io/app/applications/wwchw2UGlt0N)
-   1. Typical response: [![View performance data on Skylight](https://badges.skylight.io/typical/wwchw2UGlt0N.svg)](https://oss.skylight.io/app/applications/wwchw2UGlt0N)
-   1. Traffic: [![View performance data on Skylight](https://badges.skylight.io/rpm/wwchw2UGlt0N.svg)](https://oss.skylight.io/app/applications/wwchw2UGlt0N)
-1. Code coverage : https://CodeCov.io [![codecov](https://codecov.io/gh/emad-elsaid/rubyfunctions/branch/master/graph/badge.svg)](https://codecov.io/gh/emad-elsaid/rubyfunctions)
