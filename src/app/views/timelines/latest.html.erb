@@ -3,4 +3,6 @@
 <h1 class="is-size-1">Latest functions</h1>
 <hr/>
 
-<%= render @functions %>
+<% cache @functions do %>
+  <%= render @functions %>
+<% end %>
