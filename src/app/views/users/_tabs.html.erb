@@ -1,0 +1,23 @@
+<div class="tabs">
+  <ul>
+    <% if current_page?(controller: 'functions', action: 'index')%>
+      <li class="is-active">
+    <% else %>
+      <li>
+    <% end %>
+    <%= link_to user_functions_path(user), title: 'Saved functions' do %>
+        Published functions
+    <% end %>
+    </li>
+
+    <% if current_page?(controller: 'saves', action: 'index')%>
+      <li class="is-active">
+    <% else %>
+      <li>
+    <% end %>
+    <%= link_to user_saves_path(user), title: 'Saved functions' do %>
+        Saved Functions
+    <% end %>
+    </li>
+  </ul>
+</div>

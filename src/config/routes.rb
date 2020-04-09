@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     resources :functions do
       resources :comments, only: %i[create destroy]
       resource :like, only: %i[create destroy]
+      resource :save, only: %i[create destroy]
     end
+    resources :saves, only: :index
   end
 
   resource :github, only: [:new]
