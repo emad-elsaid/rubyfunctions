@@ -1,0 +1,13 @@
+version = 1
+
+test_patterns = ["src/spec/**/*_spec.rb"]
+
+exclude_patterns = [
+    "src/bin/**",
+    "src/db/migrate/**",
+    "src/db/schema.rb"
+]
+
+[[analyzers]]
+name = "ruby"
+enabled = true
