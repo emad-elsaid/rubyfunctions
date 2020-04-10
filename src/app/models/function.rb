@@ -10,6 +10,7 @@ class Function < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy, as: :likeable
+  has_many :saves, dependent: :destroy
 
   def to_param
     name
