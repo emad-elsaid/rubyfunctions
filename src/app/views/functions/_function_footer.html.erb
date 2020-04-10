@@ -2,18 +2,34 @@
   <% if liked?(function, current_user) %>
 
     <%= link_to user_function_like_path(user_id: function.user, function_id: function), class: 'card-footer-item', method: :delete do  %>
-      <span class="icon">
-        <i class="fas fa-thumbs-up"></i> Like
-      </span>
+      <span class="icon"> <i class="fas fa-thumbs-up"></i> </span> Like
     <% end %>
 
   <% else %>
 
     <%= link_to user_function_like_path(user_id: function.user, function_id: function), class: 'card-footer-item has-text-grey', method: :post do  %>
-      <span class="icon">
-        <i class="far fa-thumbs-up"></i> Like
-      </span>
+      <span class="icon"> <i class="far fa-thumbs-up"></i> </span> Like
     <% end %>
 
   <% end %>
+
+  <a href="#comment" class="card-footer-item">
+    <span class="icon"> <i class="far fa-comment"></i> </span> Comment
+  </a>
+
+
+  <% if saved?(current_user, function) %>
+
+    <%= link_to user_function_save_path(function_id: function, user_id: function.user), method: :delete, class: 'card-footer-item' do %>
+      <span class="icon"> <i class="fas fa-bookmark"></i> </span> Save
+    <% end %>
+
+  <% else %>
+
+    <%= link_to user_function_save_path(function_id: function, user_id: function.user), method: :post , class: 'card-footer-item has-text-grey' do %>
+      <span class="icon"> <i class="far fa-bookmark"></i> </span> Save
+    <% end %>
+
+  <% end %>
+
 </div>

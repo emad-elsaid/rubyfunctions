@@ -1,7 +1,7 @@
 <%= form_with(model: comment, url: [comment.function.user, comment.function, comment], local: true, html: { class: 'form' }) do |form| %>
 
   <div class="field">
-    <div class="control"> <%= form.text_area :content, rows: 4, class: :textarea %> </div>
+    <div class="control"> <%= form.text_area :content, rows: 4, class: :textarea, id: 'comment' %> </div>
   </div>
 
   <div class="field is-grouped">

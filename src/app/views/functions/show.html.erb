@@ -1,7 +1,4 @@
 <%= content_for :title, sprintf("%s - by: %s", @function.name, @user.name) %>
-
 <%= render @function, full: true %>
-
-<%= render 'comments/form', comment: @comment if can?(@comment, :create) %>
-
 <%= render @function.comments %>
+<%= render 'comments/form', comment: @comment if can?(@comment, :create) %>

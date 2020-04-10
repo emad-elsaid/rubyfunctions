@@ -35,20 +35,6 @@
       <span class="icon"> <i class="fas fa-trash"></i> </span>
     <% end if can?(function, :destroy) %>
 
-    <% if current_user && saved?(current_user, function) %>
-
-      <%= link_to user_function_save_path(function_id: function, user_id: function.user), method: :delete, class: 'has-text-danger card-header-icon' do %>
-        <span class="icon" > <i class="fas fa-bookmark"></i> </span>
-      <% end %>
-
-    <% else %>
-
-      <%= link_to user_function_save_path(function_id: function, user_id: function.user), method: :post , class: 'card-header-icon' do %>
-        <span class="icon"> <i class="far fa-bookmark"></i> </span>
-      <% end %>
-
-    <% end %>
-
     <% unless full %>
       <div class="card-header-icon">
         <%= link_to [function.user, function], class: 'button is-link' do %>
