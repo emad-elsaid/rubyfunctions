@@ -18,7 +18,7 @@
   </a>
 
 
-  <% if saved?(current_user, function) %>
+  <% if saved?(function, current_user) %>
 
     <%= link_to user_function_save_path(function_id: function, user_id: function.user), method: :delete, class: 'card-footer-item' do %>
       <span class="icon"> <i class="fas fa-bookmark"></i> </span> Save

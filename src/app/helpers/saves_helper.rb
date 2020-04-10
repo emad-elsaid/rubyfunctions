@@ -1,5 +1,5 @@
 module SavesHelper
-  def saved?(user, function)
+  def saved?(function, user)
     user.saves.exists?(function: function)
   end
 end
