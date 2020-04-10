@@ -44,17 +44,17 @@
 
             <%= link_to new_user_function_path(current_user), class: 'button is-link' do %>
               <span>New function</span>
-              <span class="icon"> <i class="fas fa-plus"></i> </span>
+              <%= icon('fas fa-plus') %>
             <% end %>
 
             <%= link_to session_path, method: :delete, class: 'button has-text-danger' do %>
               <span>Logout</span>
-              <span class="icon"> <i class="fas fa-power-off"></i> </span>
+              <%= icon('fas fa-power-off') %>
             <% end %>
           <% else %>
 
             <%= link_to "https://github.com/login/oauth/authorize?client_id=#{ENV["GITHUB_CLIENT_ID"]}", class: 'button' do %>
-              <span class="icon"> <i class="fab fa-github"></i> </span>
+              <%= icon('fab fa-github') %>
               <span>Login with Github</span>
             <% end %>
 
