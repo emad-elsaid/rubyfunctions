@@ -24,7 +24,9 @@
   </header>
 
   <div class="card-content">
-    <%= simple_format function.usage %>
+    <div class="content">
+      <%= render_markdown function.usage %>
+    </div>
   </div>
 
   <%= render_code function.code if full %>

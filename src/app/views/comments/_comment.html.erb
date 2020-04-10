@@ -15,9 +15,11 @@
             · <%= distance_of_time_in_words_to_now comment.created_at %>
             <%= link_to icon('fas fa-trash'), [comment.function.user, comment.function, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'has-text-danger' if can?(comment, :destroy) %>
           </small>
+          <br>
         </p>
-
-        <p> <%= simple_format comment.content %> </p>
+        <div class="content">
+          <%= render_markdown comment.content %>
+        </div>
       </div>
     </div>
   </article>

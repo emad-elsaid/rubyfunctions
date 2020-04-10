@@ -91,6 +91,9 @@ GEM
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
     json (2.3.0)
+    kramdown (2.1.0)
+    kramdown-parser-gfm (1.1.0)
+      kramdown (~> 2.0)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -257,6 +260,8 @@ DEPENDENCIES
   codecov
   factory_bot_rails
   faker
+  kramdown
+  kramdown-parser-gfm
   listen (>= 3.0.5, < 3.3)
   pg
   pry-rails
