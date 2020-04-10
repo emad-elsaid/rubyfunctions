@@ -23,9 +23,8 @@
       </div>
     </div>
 
-    <%= link_to_if can?(function, :edit), icon('fas fa-edit'), edit_user_function_path(function.user, function), class: 'card-header-icon' %>
-
-    <%= link_to_if can?(function, :destroy), icon('fas fa-trash'), [function.user, function], method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-header-icon has-text-danger' %>
+    <%= link_to icon('fas fa-edit'), edit_user_function_path(function.user, function), class: 'card-header-icon' if can?(function, :edit) %>
+    <%= link_to icon('fas fa-trash'), [function.user, function], method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-header-icon has-text-danger' if can?(function, :destroy) %>
 
     <% unless full %>
       <div class="card-header-icon">

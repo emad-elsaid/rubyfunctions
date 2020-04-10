@@ -1,0 +1,30 @@
+<div class="column">
+
+  <div class="card is-shadowless">
+
+    <div class="card-header">
+      <div class="card-header-icon">
+        <%= icon('fas fa-trophy') %>
+      </div>
+      <div class="card-header-title">
+        Your next adventures
+      </div>
+    </div>
+
+    <div class="card-content">
+      Lets start our journey in ruby functions. The following steps should help your get started.
+    </div>
+
+    <div class="card-content">
+      <ul>
+        <%= achievement(current_user, 'Login with your Github account') %>
+        <%= achievement(current_user && !current_user.functions.empty?, 'Publish your first function') %>
+        <%= achievement(current_user && current_user.likes.count >= 5, 'Like at least 5 functions') %>
+        <%= achievement(current_user && current_user.comments.count >= 5, 'Write at least 5 comments') %>
+        <%= achievement(current_user && current_user.saves.count >= 5, 'Save at least 5 functions') %>
+        <%= achievement(current_user && current_user.functions.count >= 10, 'Publish 10 functions') %>
+      </ul>
+    </div>
+  </div>
+
+</div>

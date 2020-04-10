@@ -1,5 +1,10 @@
 <%= render 'common/concept' unless current_user %>
 
-<h1 class="is-size-1">Latest functions</h1>
+<div class="columns">
+  <div class="column is-three-quarters">
+    <h1 class="is-size-1">Latest functions</h1>
+    <%= render @functions %>
+  </div>
 
-<%= render @functions %>
+  <%= render 'sidebar' if !current_user || current_user.created_at > 30.days.ago %>
+</div>
