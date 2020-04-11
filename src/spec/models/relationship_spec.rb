@@ -1,5 +1,5 @@
-RSpec.describe Follower, type: :model do
-  subject { create :follower }
+RSpec.describe Relationship, type: :model do
+  subject { create :relationship }
   it { is_expected.to belong_to :follower }
   it { is_expected.to belong_to :followee }
 

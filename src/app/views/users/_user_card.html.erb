@@ -17,10 +17,11 @@
         </p>
         
         <% unless current_user.nil? || user.id == current_user.id %> 
-        
-          <%= form_with model: current_user.active_relationships.new(followee: user), local: true do |form| %>
+          <% text = current_user.following?(user.id) ? "Unfollow" : "Follow" %>
+          <% method = current_user.following?(user.id) ? :delete : :post %>
+          <%= form_with model: current_user.followings.new(followee: user), method: method.to_sym, local: true do |form| %>
             <%= form.hidden_field :followee_id %>
-            <%= form.submit "Follow", class: "button has-text" %>
+            <%= form.submit text, class: "button has-text" %>
           <% end %>
 
         <% end %>

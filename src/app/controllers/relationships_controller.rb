@@ -1,15 +1,14 @@
 class RelationshipsController < ApplicationController
   before_action :set_user
 
-  def index
-  end
-
   def create
-    relationship = current_user.active_relationships.new(followee: @user)
-    render json: { data: params, user: @user, relationship: relationship }
+    relations = current_user.follow(@user.id)
+    redirect_to user_functions_path(@user.username)
   end
 
   def destroy
+    current_user.unfollow(@user.id)
+    redirect_to user_functions_path(@user.username)
   end
 
   def set_user
