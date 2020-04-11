@@ -24,5 +24,11 @@
       </span>
       Top saved
     <% end %>
+    <%= link_to timelines_contributors_path, class: ['panel-block', ('is-active' if action_name == 'contributors') ] do %>
+      <span class="panel-icon">
+        <i class="fas fa-award"></i>
+      </span>
+      Top contributors
+    <% end %>
   </nav>
 </div>

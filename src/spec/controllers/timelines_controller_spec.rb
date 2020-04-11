@@ -36,4 +36,13 @@ RSpec.describe TimelinesController do
       expect(response).to be_successful
     end
   end
+
+  describe 'GET #contributors' do
+    let!(:user) { create :user }
+
+    it 'returns a success response' do
+      get :contributors
+      expect(response).to be_successful
+    end
+  end
 end

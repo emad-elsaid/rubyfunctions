@@ -1,14 +1,14 @@
-<div class="card m-b-md">
+<div class="card m-b-md is-shadowless">
   <div class="card-content">
     <div class="media">
       <div class="media-left">
         <figure class="image is-128x128">
-          <%= image_tag user_image_url(user) %>
+          <%= link_to image_tag(user_image_url(user)), user_functions_path(user) %>
         </figure>
       </div>
       <div class="media-content">
         <p class="title is-4">
-          <%= user.name %>
+          <%= link_to user.name, user_functions_path(user) %>
         </p>
         <p class="subtitle is-6">
           @<%= user.username %>

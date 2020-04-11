@@ -19,4 +19,8 @@ class TimelinesController < ApplicationController
     @functions = Function.limit(LIMIT).order(saves_count: :desc).all
     render :latest
   end
+
+  def contributors
+    @users = User.limit(LIMIT).order(functions_count: :desc).all
+  end
 end

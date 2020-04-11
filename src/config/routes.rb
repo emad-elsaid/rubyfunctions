@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'timelines/liked', to: 'timelines#liked'
   get 'timelines/commented', to: 'timelines#commented'
   get 'timelines/saved', to: 'timelines#saved'
+  get 'timelines/contributors', to: 'timelines#contributors'
 
   root to: 'timelines#latest'
 end
