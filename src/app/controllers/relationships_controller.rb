@@ -2,7 +2,7 @@ class RelationshipsController < ApplicationController
   before_action :set_user
 
   def create
-    relations = current_user.follow(@user.id)
+    current_user.follow(@user.id)
     redirect_to user_functions_path(@user.username)
   end
 
