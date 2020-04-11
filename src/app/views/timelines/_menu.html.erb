@@ -1,0 +1,10 @@
+<div class="column is-one-quarter">
+  <nav class="panel has-background-white is-shadowless">
+    <%= link_to timelines_latest_path, class: ['panel-block', ('is-active' if action_name == 'latest') ] do %>
+      <span class="panel-icon">
+        <i class="fas fa-clock"></i>
+      </span>
+      Latest functions
+    <% end %>
+  </nav>
+</div>
