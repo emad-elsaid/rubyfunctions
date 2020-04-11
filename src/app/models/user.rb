@@ -8,10 +8,10 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :saves, dependent: :destroy
 
-  has_many :followings, class_name: "Relationship", foreign_key: "follower_id",
+  has_many :followings, class_name: :Relationship, foreign_key: :follower_id,
                         inverse_of: :follower, dependent: :destroy
 
-  has_many :followers, class_name: "Relationship", foreign_key: "followee_id",
+  has_many :followers, class_name: :Relationship, foreign_key: :followee_id,
                        inverse_of: :follower, dependent: :destroy
 
   def to_param
