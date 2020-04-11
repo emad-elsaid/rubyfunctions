@@ -1,6 +1,6 @@
 <%= content_for :title, @user.name %>
 
-<%= render 'users/user_card', user: @user %>
+<%= render @user %>
 <%= render 'users/tabs', user: @user %>
 <%= render 'saves', saves: @saves, user: @user %>
 
