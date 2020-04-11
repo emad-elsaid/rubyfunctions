@@ -25,7 +25,7 @@ m = Module.new do
     return unless invoked_as_script? # don't want to hijack other binstubs
     unless 'update'.start_with?(ARGV.first || ' ')
       return
-    end # must be running `bundle update`
+    end
 
     bundler_version = nil
     update_index = nil
