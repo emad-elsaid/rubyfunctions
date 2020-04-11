@@ -47,10 +47,7 @@
               <%= icon('fas fa-plus') %>
             <% end %>
 
-            <%= link_to session_path, method: :delete, class: 'button has-text-danger' do %>
-              <span>Logout</span>
-              <%= icon('fas fa-power-off') %>
-            <% end %>
+            <%= link_to icon('fas fa-power-off'), session_path, method: :delete, class: 'button has-text-danger' %>
           <% else %>
 
             <%= link_to "https://github.com/login/oauth/authorize?client_id=#{ENV["GITHUB_CLIENT_ID"]}", class: 'button' do %>
