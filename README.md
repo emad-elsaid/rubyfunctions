@@ -36,6 +36,7 @@ and use it if we need to.
 1. Rails docs https://devdocs.io/rails~6.0/
 1. Bulma documentation https://bulma.io/documentation/
 1. Font awesome icons list https://fontawesome.com/icons
+1. Undraw illustrations (brand color: #3273dc) https://undraw.co/
 
 # Setting up the project
 
