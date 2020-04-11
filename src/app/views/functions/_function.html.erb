@@ -6,9 +6,7 @@
       <div class="media">
         <div class="media-left">
           <figure class="image is-48x48">
-            <%= link_to user_functions_path(function.user) do
-              image_tag user_image_url(function.user), class: 'is-rounded'
-            end %>
+            <%= link_to image_tag(user_image_url(function.user), class: 'is-rounded'), user_functions_path(function.user) %>
           </figure>
         </div>
         <div class="media-content">
@@ -23,17 +21,6 @@
       </div>
     </div>
 
-    <%= link_to icon('fas fa-edit'), edit_user_function_path(function.user, function), class: 'card-header-icon' if can?(function, :edit) %>
-    <%= link_to icon('fas fa-trash'), [function.user, function], method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-header-icon has-text-danger' if can?(function, :destroy) %>
-
-    <% unless full %>
-      <div class="card-header-icon">
-        <%= link_to [function.user, function], class: 'button is-link' do %>
-          <span> Show code </span>
-          <%= icon('fas fa-code') %>
-        <% end %>
-      </div>
-    <% end %>
   </header>
 
   <div class="card-content">
@@ -48,6 +35,13 @@
       <i class="fas fa-comment"></i> <%= function.comments.size %> ·
       <i class="fas fa-bookmark"></i> <%= function.saves.size %>
     </small>
+    <% unless full %>
+      <%= link_to [function.user, function], class: 'button is-pulled-right is-small is-link' do %>
+        <span> Show code </span>
+        <%= icon('fas fa-code') %>
+      <% end %>
+    <% end %>
+    <div class="is-clearfix"></div>
   </div>
 
   <%= render 'function_footer', function: function if current_user && full %>

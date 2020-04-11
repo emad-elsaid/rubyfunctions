@@ -10,4 +10,6 @@
     <%= link_to icon('far fa-bookmark') + 'Save', user_function_save_path(function_id: function, user_id: function.user), method: :post , class: 'card-footer-item has-text-grey' %>
   <% end %>
 
+  <%= link_to icon('fas fa-edit') + 'Edit', edit_user_function_path(function.user, function), class: 'card-footer-item' if can?(function, :edit) %>
+  <%= link_to icon('fas fa-trash') + 'Delete', [function.user, function], method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-footer-item has-text-danger' if can?(function, :destroy) %>
 </div>
