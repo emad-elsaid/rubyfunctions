@@ -15,6 +15,15 @@
             @<%= user.username %>
           <% end %>
         </p>
+        
+        <% unless current_user.nil? || user.id == current_user.id %> 
+        
+          <%= form_with model: current_user.active_relationships.new(followee: user), local: true do |form| %>
+            <%= form.hidden_field :followee_id %>
+            <%= form.submit "Follow", class: "button has-text" %>
+          <% end %>
+
+        <% end %>
       </div>
     </div>
   </div>
