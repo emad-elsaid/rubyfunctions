@@ -11,7 +11,7 @@ class FunctionsController < ApplicationController
 
     offset = params.fetch(:offset, 0).to_i
     @functions = @user.functions.limit(LIMIT).offset(offset).order(created_at: :desc).all
-    @next = offset + LIMIT if @functions.count == LIMIT
+    @next = offset + LIMIT if @functions.size == LIMIT
   end
 
   def show

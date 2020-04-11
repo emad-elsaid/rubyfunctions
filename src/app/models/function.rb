@@ -4,7 +4,7 @@ class Function < ApplicationRecord
   validates :code, presence: true
   validates :user, presence: true
 
-  belongs_to :user
+  belongs_to :user, counter_cache: true
 
   before_validation :validate_function_name
 
