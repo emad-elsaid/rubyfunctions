@@ -9,4 +9,31 @@ RSpec.describe TimelinesController do
       expect(response).to be_successful
     end
   end
+
+  describe 'GET #liked' do
+    let!(:function) { create :function }
+
+    it 'returns a success response' do
+      get :liked
+      expect(response).to be_successful
+    end
+  end
+
+  describe 'GET #commented' do
+    let!(:function) { create :function }
+
+    it 'returns a success response' do
+      get :commented
+      expect(response).to be_successful
+    end
+  end
+
+  describe 'GET #saved' do
+    let!(:function) { create :function }
+
+    it 'returns a success response' do
+      get :saved
+      expect(response).to be_successful
+    end
+  end
 end

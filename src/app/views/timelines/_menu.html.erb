@@ -6,5 +6,23 @@
       </span>
       Latest functions
     <% end %>
+    <%= link_to timelines_liked_path, class: ['panel-block', ('is-active' if action_name == 'liked') ] do %>
+      <span class="panel-icon">
+        <i class="fas fa-thumbs-up"></i>
+      </span>
+      Top liked
+    <% end %>
+    <%= link_to timelines_commented_path, class: ['panel-block', ('is-active' if action_name == 'commented') ] do %>
+      <span class="panel-icon">
+        <i class="fas fa-comment"></i>
+      </span>
+      Top commented
+    <% end %>
+    <%= link_to timelines_saved_path, class: ['panel-block', ('is-active' if action_name == 'saved') ] do %>
+      <span class="panel-icon">
+        <i class="fas fa-bookmark"></i>
+      </span>
+      Top saved
+    <% end %>
   </nav>
 </div>

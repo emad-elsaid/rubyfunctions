@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resource :github, only: [:new]
   resource :session, only: [:destroy]
   get 'timelines/latest', to: 'timelines#latest'
+  get 'timelines/liked', to: 'timelines#liked'
+  get 'timelines/commented', to: 'timelines#commented'
+  get 'timelines/saved', to: 'timelines#saved'
 
   root to: 'timelines#latest'
 end
