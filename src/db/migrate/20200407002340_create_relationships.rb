@@ -6,7 +6,7 @@ class CreateRelationships < ActiveRecord::Migration[6.0]
 
       t.timestamps
 
-      t.index [:followee_id, :follower_id], unique: true
+      t.index %i[followee_id, follower_id], unique: true
     end
   end
 end
