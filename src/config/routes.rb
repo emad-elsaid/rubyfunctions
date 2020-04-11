@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :relationships, only: %i[create destroy index]
   resource :github, only: [:new]
   resource :session, only: [:destroy]
   get 'timelines/latest', to: 'timelines#latest'
