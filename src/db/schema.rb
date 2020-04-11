@@ -10,12 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_04_07_002340) do
-=======
 ActiveRecord::Schema.define(version: 2020_04_11_142654) do
 
->>>>>>> c1138bd7aaba91a6bdc92b3977ec45781d626440
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +58,8 @@ ActiveRecord::Schema.define(version: 2020_04_11_142654) do
     t.index ["followee_id", "follower_id"], name: "index_relationships_on_followee_id_and_follower_id", unique: true
     t.index ["followee_id"], name: "index_relationships_on_followee_id"
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
   create_table "saves", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "function_id", null: false
