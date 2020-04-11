@@ -1,7 +1,6 @@
 module PermissionsConcern
   extend ActiveSupport::Concern
 
-  class Unauthorized < StandardError; end
   class ObjectPermissionsMissing < StandardError; end
 
   included do
@@ -13,6 +12,7 @@ module PermissionsConcern
     when Function then function_can?(model, action)
     when Comment then comment_can?(model, action)
     when Like then like_can?(model, action)
+    when Save then save_can?(model, action)
     else raise ObjectPermissionsMissing, model
     end
   end
@@ -35,6 +35,12 @@ module PermissionsConcern
   end
 
   def like_can?(model, action)
+    case action
+    when :create, :destroy then current_user && current_user == model.user
+    end
+  end
+
+  def save_can?(model, action)
     case action
     when :create, :destroy then current_user && current_user == model.user
     end

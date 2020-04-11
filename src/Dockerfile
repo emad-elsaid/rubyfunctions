@@ -14,6 +14,9 @@ WORKDIR /tmp
 RUN bundle install --without="development test" -j8
 
 WORKDIR $app
+COPY package.json yarn.lock $app/
+RUN yarn install --production --frozen-lockfile
+
 ADD . $app
 RUN bundle outdated --strict
 RUN mkdir -p tmp/pids

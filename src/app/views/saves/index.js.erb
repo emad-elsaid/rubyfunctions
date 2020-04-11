@@ -1,0 +1,4 @@
+var el = document.querySelector('a.more');
+var newEl = document.createElement('div');
+newEl.innerHTML = '<%= escape_javascript(render 'saves', saves: @saves, user: @user) %>';
+el.parentNode.replaceChild(newEl, el);

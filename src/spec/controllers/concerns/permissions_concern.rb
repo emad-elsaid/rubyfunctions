@@ -114,4 +114,30 @@ shared_examples_for 'PermissionsConcern' do
       it { expect(controller.can?(like, :destroy)).to be_falsey }
     end
   end
+
+  describe 'Save' do
+    context 'for a guest' do
+      let(:save) { create :save }
+      let(:user) { nil }
+
+      it { expect(controller.can?(save, :create)).to be_falsy }
+      it { expect(controller.can?(save, :destroy)).to be_falsy }
+    end
+
+    context 'for a user' do
+      let(:save) { create :save }
+      let(:user) { save.user }
+
+      it { expect(controller.can?(save, :create)).to be_truthy }
+      it { expect(controller.can?(save, :destroy)).to be_truthy }
+    end
+
+    context 'for a user that does not own the saved function' do
+      let(:save) { create :save }
+      let(:user) { create :user }
+
+      it { expect(controller.can?(save, :create)).to be_falsy }
+      it { expect(controller.can?(save, :destroy)).to be_falsy }
+    end
+  end
 end

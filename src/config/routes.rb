@@ -3,13 +3,19 @@ Rails.application.routes.draw do
     resources :functions do
       resources :comments, only: %i[create destroy]
       resource :like, only: %i[create destroy]
+      resource :save, only: %i[create destroy]
     end
+    resources :saves, only: :index
   end
 
   resource :relationships, only: %i[create destroy index]
   resource :github, only: [:new]
   resource :session, only: [:destroy]
   get 'timelines/latest', to: 'timelines#latest'
+  get 'timelines/liked', to: 'timelines#liked'
+  get 'timelines/commented', to: 'timelines#commented'
+  get 'timelines/saved', to: 'timelines#saved'
+  get 'timelines/contributors', to: 'timelines#contributors'
 
   root to: 'timelines#latest'
 end

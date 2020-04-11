@@ -1,0 +1,11 @@
+<%= render 'common/concept' unless current_user %>
+
+<div class="columns">
+  <%= render 'menu'  %>
+
+  <div class="column">
+    <%= render @users %>
+  </div>
+
+  <%= render 'sidebar' if !current_user || current_user.created_at > 30.days.ago %>
+</div>

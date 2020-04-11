@@ -1,6 +1,13 @@
 RUBY FUNCTIONS
 ==============
 
+[![View performance data on Skylight](https://badges.skylight.io/status/wwchw2UGlt0N.svg)](https://oss.skylight.io/app/applications/wwchw2UGlt0N)
+[![View performance data on Skylight](https://badges.skylight.io/problem/wwchw2UGlt0N.svg)](https://oss.skylight.io/app/applications/wwchw2UGlt0N)
+[![View performance data on Skylight](https://badges.skylight.io/typical/wwchw2UGlt0N.svg)](https://oss.skylight.io/app/applications/wwchw2UGlt0N)
+[![View performance data on Skylight](https://badges.skylight.io/rpm/wwchw2UGlt0N.svg)](https://oss.skylight.io/app/applications/wwchw2UGlt0N)
+[![codecov](https://codecov.io/gh/emad-elsaid/rubyfunctions/branch/master/graph/badge.svg)](https://codecov.io/gh/emad-elsaid/rubyfunctions)
+[![DeepSource](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/emad-elsaid/rubyfunctions/?ref=repository-badge)
+
 Here is the challenge:
 
 1. Write a useful Ruby function
@@ -29,6 +36,7 @@ and use it if we need to.
 1. Rails docs https://devdocs.io/rails~6.0/
 1. Bulma documentation https://bulma.io/documentation/
 1. Font awesome icons list https://fontawesome.com/icons
+1. Undraw illustrations (brand color: #3273dc) https://undraw.co/
 
 # Setting up the project
 

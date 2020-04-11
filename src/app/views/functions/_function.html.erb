@@ -1,48 +1,26 @@
 <% full ||= false %>
 
-<div class="card <%= 'is-clipped' unless full %> m-b-md" tabindex="0">
-  <header class="card-header">
+<div class="card is-shadowless <%= 'is-clipped' unless full %> m-b-md" tabindex="0">
+  <header class="card-header is-shadowless">
     <div class="card-header-title">
       <div class="media">
         <div class="media-left">
           <figure class="image is-48x48">
-            <%= link_to user_functions_path(function.user) do %>
-              <%= image_tag user_image_url(function.user), class: 'is-rounded' %>
-            <% end %>
+            <%= link_to image_tag(user_image_url(function.user), class: 'is-rounded'), user_functions_path(function.user) %>
           </figure>
         </div>
         <div class="media-content">
           <p class="title is-5">
-            <%= link_to user_functions_path(function.user) do %>
-              <%= function.user.name %>
-            <% end %>
+            <%= link_to function.name, [function.user, function] %>
           </p>
           <p class="subtitle is-6">
-            <%= link_to [function.user, function] do %>
-              <%= function.name %> <br/>
-            <% end %>
-            <small class="has-text-grey-light is-small"><%= function.created_at.to_s(:long) %></small>
+            <%= link_to function.user.name, user_functions_path(function.user) %>
+            <small class="has-text-grey-light"> · @<%= function.user.username %> · <%= distance_of_time_in_words_to_now function.created_at %></small>
           </p>
         </div>
       </div>
     </div>
 
-    <%= link_to edit_user_function_path(function.user, function), class: 'card-header-icon' do %>
-      <span class="icon"> <i class="fas fa-edit"></i> </span>
-    <% end if can?(function, :edit) %>
-
-    <%= link_to [function.user, function], method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-header-icon has-text-danger' do %>
-      <span class="icon"> <i class="fas fa-trash"></i> </span>
-    <% end if can?(function, :destroy) %>
-
-    <% unless full %>
-      <div class="card-header-icon">
-        <%= link_to [function.user, function], class: 'button is-link' do %>
-          <span> Show code </span>
-          <span class="icon"> <i class="fas fa-code"></i> </span>
-        <% end %>
-      </div>
-    <% end %>
   </header>
 
   <div class="card-content">
@@ -51,10 +29,19 @@
 
   <%= render_code function.code if full %>
 
-  <div class="card-content">
-    <i class="fas fa-thumbs-up"></i> <%= function.likes.count %> Likes
-    and
-    <i class="fas fa-comment"></i> <%= function.comments.count %> Comments on this function
+  <div class="card-content has-text-grey-light">
+    <small>
+      <i class="fas fa-thumbs-up"></i> <%= function.likes.size %> ·
+      <i class="fas fa-comment"></i> <%= function.comments.size %> ·
+      <i class="fas fa-bookmark"></i> <%= function.saves.size %>
+    </small>
+    <% unless full %>
+      <%= link_to [function.user, function], class: 'button is-pulled-right is-small is-link' do %>
+        <span> Show code </span>
+        <%= icon('fas fa-code') %>
+      <% end %>
+    <% end %>
+    <div class="is-clearfix"></div>
   </div>
 
   <%= render 'function_footer', function: function if current_user && full %>

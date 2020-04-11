@@ -1,19 +1,15 @@
 <div class="card-footer">
-  <% if liked?(function, current_user) %>
 
-    <%= link_to user_function_like_path(user_id: function.user, function_id: function), class: 'card-footer-item', method: :delete do  %>
-      <span class="icon">
-        <i class="fas fa-thumbs-up"></i> Like
-      </span>
-    <% end %>
-
-  <% else %>
-
-    <%= link_to user_function_like_path(user_id: function.user, function_id: function), class: 'card-footer-item has-text-grey', method: :post do  %>
-      <span class="icon">
-        <i class="far fa-thumbs-up"></i> Like
-      </span>
-    <% end %>
-
+  <%= link_to_if liked?(function, current_user), icon('fas fa-thumbs-up') + 'Like', user_function_like_path(user_id: function.user, function_id: function), class: 'card-footer-item', method: :delete do  %>
+    <%= link_to icon('far fa-thumbs-up') + 'Like', user_function_like_path(user_id: function.user, function_id: function), class: 'card-footer-item has-text-grey', method: :post  %>
   <% end %>
+
+  <%= link_to icon('far fa-comment') + 'Comment', '#comment', class: "card-footer-item"  %>
+
+  <%= link_to_if saved?(function, current_user), icon('fas fa-bookmark') + 'Save',  user_function_save_path(function_id: function, user_id: function.user), method: :delete, class: 'card-footer-item' do %>
+    <%= link_to icon('far fa-bookmark') + 'Save', user_function_save_path(function_id: function, user_id: function.user), method: :post , class: 'card-footer-item has-text-grey' %>
+  <% end %>
+
+  <%= link_to icon('fas fa-edit') + 'Edit', edit_user_function_path(function.user, function), class: 'card-footer-item' if can?(function, :edit) %>
+  <%= link_to icon('fas fa-trash') + 'Delete', [function.user, function], method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-footer-item has-text-danger' if can?(function, :destroy) %>
 </div>

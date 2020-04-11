@@ -1,16 +1,15 @@
 <%= content_for :title, @user.name %>
 
-<%= render 'users/user_card', user: @user %>
+<%= render @user %>
+<%= render 'users/tabs', user: @user %>
 <%= render 'functions', functions: @functions, user: @user %>
 
-
-<% if @user.functions.count == 0 && @user != current_user %>
+<% if @user.functions.empty? %>
   <div class="notification is-success content">
     <%= @user.name %> didn't publish any functions yet.
   </div>
 <% end %>
 
-<% if @user.functions.count == 0 && @user == current_user %>
+<% if @user.functions.empty? && @user == current_user %>
   <%= render 'common/concept' %>
-</div>
 <% end %>
