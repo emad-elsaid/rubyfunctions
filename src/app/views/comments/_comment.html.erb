@@ -7,19 +7,16 @@
     </div>
     <div class="media-content">
       <div class="content">
+        <%= link_to comment.user.name, user_functions_path(comment.user) %>
+        <small class="has-text-grey-light">
+          · @<%= comment.user.username %>
+          · <%= distance_of_time_in_words_to_now comment.created_at %>
+          <%= link_to icon('fas fa-trash'), [comment.function.user, comment.function, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'has-text-danger' if can?(comment, :destroy) %>
+        </small>
+      </div>
 
-        <p>
-          <%= link_to comment.user.name, user_functions_path(comment.user) %>
-          <small class="has-text-grey-light">
-            · @<%= comment.user.username %>
-            · <%= distance_of_time_in_words_to_now comment.created_at %>
-            <%= link_to icon('fas fa-trash'), [comment.function.user, comment.function, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'has-text-danger' if can?(comment, :destroy) %>
-          </small>
-          <br>
-        </p>
-        <div class="content">
-          <%= render_markdown comment.content %>
-        </div>
+      <div class="content">
+        <%= render_markdown comment.content %>
       </div>
     </div>
   </article>
