@@ -5,6 +5,8 @@ ruby '~>2.6.3'
 gem 'rails', '~> 6.0.0'
 
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'kramdown'
+gem 'kramdown-parser-gfm'
 gem 'pg'
 gem 'puma', '~> 4.3'
 gem 'rest-client'
