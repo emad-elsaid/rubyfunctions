@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_11_142654) do
+ActiveRecord::Schema.define(version: 2020_04_12_003715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 2020_04_11_142654) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.integer "comments_count"
-    t.integer "likes_count"
-    t.integer "saves_count"
+    t.integer "comments_count", default: 0
+    t.integer "likes_count", default: 0
+    t.integer "saves_count", default: 0
     t.index ["user_id", "name"], name: "index_functions_on_user_id_and_name", unique: true
     t.index ["user_id"], name: "index_functions_on_user_id"
   end
@@ -66,10 +66,10 @@ ActiveRecord::Schema.define(version: 2020_04_11_142654) do
     t.string "github_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "comments_count"
-    t.integer "functions_count"
-    t.integer "likes_count"
-    t.integer "saves_count"
+    t.integer "comments_count", default: 0
+    t.integer "functions_count", default: 0
+    t.integer "likes_count", default: 0
+    t.integer "saves_count", default: 0
     t.index ["github_id"], name: "index_users_on_github_id", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
