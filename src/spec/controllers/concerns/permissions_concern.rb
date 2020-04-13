@@ -49,7 +49,7 @@ shared_examples_for 'PermissionsConcern' do
       it { expect(controller.can?(comment, :destroy)).to be_falsey }
     end
 
-    context 'a user can own comments' do
+    context 'a user who owns the comment' do
       let(:comment) { create :comment }
       let(:user) { comment.user }
 

@@ -59,4 +59,31 @@ RSpec.describe CommentsController do
       expect(response).to redirect_to(user_function_url(user, function))
     end
   end
+
+  describe 'GET #edit' do
+    it 'returns a success response' do
+      comment.save!
+      get :edit, params: { function_id: function, user_id: user, id: comment }
+      expect(response).to be_successful
+    end
+  end
+
+  describe 'PUT #update' do
+    context 'with valid params' do
+      let(:new_attributes) { build(:comment).attributes }
+
+      it 'updates the requested function' do
+        comment.save!
+        put :update, params: { function_id: function, comment: new_attributes, user_id: user, id: comment }
+        comment.reload
+        expect(comment.content).to eq new_attributes['content']
+      end
+
+      it 'redirects to the function' do
+        comment.save!
+        put :update, params: { function_id: function, comment: new_attributes, user_id: user, id: comment }
+        expect(response).to redirect_to([user, function])
+      end
+    end
+  end
 end

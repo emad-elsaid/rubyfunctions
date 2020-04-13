@@ -11,6 +11,7 @@
         <small class="has-text-grey-light">
           · @<%= comment.user.username %>
           · <%= distance_of_time_in_words_to_now comment.created_at %>
+          <%= link_to icon('fas fa-edit'), edit_user_function_comment_path(user_id: comment.function.user, function_id: comment.function, id: comment) if can?(comment, :edit) %>
           <%= link_to icon('fas fa-trash'), [comment.function.user, comment.function, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'has-text-danger' if can?(comment, :destroy) %>
         </small>
       </div>

@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
   before_action :set_user
   before_action :set_function
-  before_action :set_comment, only: %i[destroy]
-  before_action :check_permission, only: %i[destroy]
+  before_action :set_comment, only: %i[destroy edit update]
+  before_action :check_permission, only: %i[destroy edit update]
 
   def create
     @comment = @function.comments.create_with(user: current_user).new(comment_params)
@@ -12,6 +12,16 @@ class CommentsController < ApplicationController
       redirect_to [@user, @function], notice: 'Your comment was successfully created.'
     else
       redirect_to [@user, @function], alert: @comment.errors.full_messages
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @comment.update(comment_params)
+      redirect_to [@user, @function], notice: 'Comment was successfully updated.'
+    else
+      render :edit
     end
   end
 
