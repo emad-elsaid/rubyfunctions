@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_142654) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "relationships", force: :cascade do |t|
+  create_table "followerships", force: :cascade do |t|
     t.bigint "followee_id"
     t.bigint "follower_id"
     t.datetime "created_at", precision: 6, null: false

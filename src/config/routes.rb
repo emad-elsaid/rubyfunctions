@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resource :save, only: %i[create destroy]
     end
     resources :saves, only: :index
-    resource :relationships, only: %i[create destroy]
+    resource :followerships, only: %i[create destroy]
   end
 
   resource :github, only: [:new]

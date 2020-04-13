@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RelationshipsController do
+RSpec.describe FollowershipsController do
   let(:user) { create :user }
   let(:current_user) { create :user }
 
@@ -10,7 +10,7 @@ RSpec.describe RelationshipsController do
     it 'follow' do
       expect do
         post :create, params: { user_id: user.id }
-      end.to change(Relationship, :count).by(1)
+      end.to change(Followership, :count).by(1)
     end
   end
 
@@ -19,7 +19,7 @@ RSpec.describe RelationshipsController do
     it 'unfollow' do
       expect do
         delete :destroy, params: { user_id: user.id }
-      end.to change(Relationship, :count).by(-1)
+      end.to change(Followership, :count).by(-1)
     end
   end
 end

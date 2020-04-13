@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe RelationshipsHelper, type: :helper do
+RSpec.describe FollowershipsHelper, type: :helper do
   describe '#followed?' do
     let(:user) { create :user }
     let(:current_user) { create :user }

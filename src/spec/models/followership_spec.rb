@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Relationship, type: :model do
-  subject { create :relationship }
+RSpec.describe Followership, type: :model do
+  subject { create :followership }
   it { is_expected.to belong_to :follower }
   it { is_expected.to belong_to :followee }
 

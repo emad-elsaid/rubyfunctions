@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :relationship do
+  factory :followership do
     association :follower, factory: :user
     association :followee, factory: :user
   end
