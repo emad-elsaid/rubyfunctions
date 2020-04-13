@@ -12,7 +12,7 @@ class FollowershipsController < ApplicationController
   end
 
   private
-  
+
   def set_user
     @user = User.from_param(params[:user_id]) || raise(ActiveRecord::RecordNotFound)
   end
