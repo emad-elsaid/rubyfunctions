@@ -22,14 +22,6 @@ class User < ApplicationRecord
     find_by(username: username)
   end
 
-  def follow(followee)
-    followings.create(followee: followee)
-  end
-
-  def unfollow(followee)
-    followings.where(followee: followee).destroy_all
-  end
-
   def self.find_or_create_from_github_user(github_user)
     find_or_create_by!(github_id: github_user['id']) do |new_user|
       username = github_user['login']

@@ -10,7 +10,7 @@ RSpec.describe FollowershipsHelper, type: :helper do
     end
 
     context 'when current user follows user' do
-      let!(:follow) { current_user.follow(user) }
+      let!(:followership) { current_user.followings.create(followee: user) }
       it { expect(helper.follows?(current_user, user)).to be_truthy }
     end
   end

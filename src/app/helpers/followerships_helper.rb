@@ -1,5 +1,5 @@
 module FollowershipsHelper
-  def follows?(follower_id, followee_id)
-    Followership.exists?(follower_id: follower_id, followee_id: followee_id)
+  def follows?(follower, followee)
+    Followership.exists?(follower: follower, followee: followee)
   end
 end

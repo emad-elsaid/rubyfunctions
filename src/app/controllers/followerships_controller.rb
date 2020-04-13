@@ -1,13 +1,13 @@
 class FollowershipsController < ApplicationController
   before_action :set_user
-
+  before_action :set_followership, only: %(destroy)
   def create
-    current_user.follow(@user)
+    @followership = current_user.followings.create(followee: @user)
     redirect_back fallback_location: [@user, :functions]
   end
 
   def destroy
-    current_user.unfollow(@user)
+    @followership.destroy
     redirect_back fallback_location: [@user, :functions]
   end
 
@@ -15,5 +15,9 @@ class FollowershipsController < ApplicationController
 
   def set_user
     @user = User.from_param(params[:user_id]) || raise(ActiveRecord::RecordNotFound)
+  end
+
+  def set_followership
+    @followership = current_user.followings.find_by!(followee: @user)
   end
 end
