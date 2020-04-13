@@ -3,7 +3,7 @@ module UsersHelper
     "https://avatars0.githubusercontent.com/u/#{user.github_id}?v=4"
   end
 
-  def user_github_account_url(user)
+  def user_github_url(user)
     "https://github.com/#{user.username}"
   end
 end

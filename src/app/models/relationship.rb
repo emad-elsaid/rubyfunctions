@@ -5,6 +5,8 @@ class Relationship < ApplicationRecord
   validates :followee, uniqueness: { scope: :follower }
   validate :follower_and_followee
 
+  private
+
   def follower_and_followee
     errors.add(:follower, "User Can't Follow Himself") if follower_id == followee_id
   end

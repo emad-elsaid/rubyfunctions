@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.describe RelationshipsController do
   let(:user) { create :user }
   let(:current_user) { create :user }
@@ -7,7 +9,7 @@ RSpec.describe RelationshipsController do
   describe 'POST #create' do
     it 'follow' do
       expect do
-        post :create, params: { relationship: { followee_id: user.id } }
+        post :create, params: { user_id: user.id }
       end.to change(Relationship, :count).by(1)
     end
   end
@@ -16,7 +18,7 @@ RSpec.describe RelationshipsController do
     before { current_user.follow(user.id) }
     it 'unfollow' do
       expect do
-        delete :destroy, params: { relationship: { followee_id: user.id } }
+        delete :destroy, params: { user_id: user.id }
       end.to change(Relationship, :count).by(-1)
     end
   end

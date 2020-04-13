@@ -22,10 +22,6 @@ class User < ApplicationRecord
     find_by(username: username)
   end
 
-  def following?(followee_id)
-    followings.where(followee_id: followee_id).exists?
-  end
-
   def follow(followee_id)
     followings.create(followee_id: followee_id)
   end
