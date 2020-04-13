@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 2020_04_11_142654) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "followerships", force: :cascade do |t|
+    t.bigint "followee_id"
+    t.bigint "follower_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["followee_id", "follower_id"], name: "index_relationships_on_followee_id_and_follower_id", unique: true
+    t.index ["followee_id"], name: "index_relationships_on_followee_id"
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
   create_table "functions", force: :cascade do |t|
     t.string "name", null: false
     t.text "usage", null: false
@@ -48,16 +58,6 @@ ActiveRecord::Schema.define(version: 2020_04_11_142654) do
     t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id"
     t.index ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable_id_and_likeable_type", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
-  create_table "followerships", force: :cascade do |t|
-    t.bigint "followee_id"
-    t.bigint "follower_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["followee_id", "follower_id"], name: "index_relationships_on_followee_id_and_follower_id", unique: true
-    t.index ["followee_id"], name: "index_relationships_on_followee_id"
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "saves", force: :cascade do |t|

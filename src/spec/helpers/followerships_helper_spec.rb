@@ -6,12 +6,12 @@ RSpec.describe FollowershipsHelper, type: :helper do
     let(:current_user) { create :user }
 
     context 'when current user did not follow the user' do
-      it { expect(helper.follows?(current_user.id, user.id)).to be_falsey }
+      it { expect(helper.follows?(current_user, user)).to be_falsey }
     end
 
     context 'when current user follows user' do
-      let!(:follow) { current_user.follow(user.id) }
-      it { expect(helper.follows?(current_user.id, user.id)).to be_truthy }
+      let!(:follow) { current_user.follow(user) }
+      it { expect(helper.follows?(current_user, user)).to be_truthy }
     end
   end
 end

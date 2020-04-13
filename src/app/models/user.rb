@@ -12,7 +12,7 @@ class User < ApplicationRecord
                         inverse_of: :follower, dependent: :destroy
 
   has_many :followers, class_name: :Followership, foreign_key: :followee_id,
-                       inverse_of: :follower, dependent: :destroy
+                       inverse_of: :followee, dependent: :destroy
 
   def to_param
     username
@@ -22,12 +22,12 @@ class User < ApplicationRecord
     find_by(username: username)
   end
 
-  def follow(followee_id)
-    followings.create(followee_id: followee_id)
+  def follow(followee)
+    followings.create(followee: followee)
   end
 
-  def unfollow(followee_id)
-    followings.where(followee_id: followee_id).destroy_all
+  def unfollow(followee)
+    followings.where(followee: followee).destroy_all
   end
 
   def self.find_or_create_from_github_user(github_user)

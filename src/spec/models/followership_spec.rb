@@ -14,5 +14,6 @@ RSpec.describe Followership, type: :model do
     dup = subject.dup
     dup.follower_id = dup.followee_id
     expect(dup).to be_invalid
+    expect(dup.errors.messages).to include(:follower)
   end
 end

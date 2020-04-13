@@ -9,16 +9,16 @@ RSpec.describe FollowershipsController do
   describe 'POST #create' do
     it 'follow' do
       expect do
-        post :create, params: { user_id: user.id }
+        post :create, params: { user_id: user.username }
       end.to change(Followership, :count).by(1)
     end
   end
 
   describe 'DELETE #destroy' do
-    before { current_user.follow(user.id) }
+    before { current_user.follow(user) }
     it 'unfollow' do
       expect do
-        delete :destroy, params: { user_id: user.id }
+        delete :destroy, params: { user_id: user.username }
       end.to change(Followership, :count).by(-1)
     end
   end
