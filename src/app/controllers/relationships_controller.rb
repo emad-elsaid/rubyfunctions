@@ -12,6 +12,6 @@ class RelationshipsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:relationship][:followee_id]) || raise(ActiveRecord::RecordNotFound)
+    @user = User.find(params[:user_id]) || raise(ActiveRecord::RecordNotFound)
   end
 end

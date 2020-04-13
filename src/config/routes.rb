@@ -6,9 +6,9 @@ Rails.application.routes.draw do
       resource :save, only: %i[create destroy]
     end
     resources :saves, only: :index
+    resource :relationships, only: %i[create destroy]
   end
 
-  resource :relationships, only: %i[create destroy index]
   resource :github, only: [:new]
   resource :session, only: [:destroy]
   get 'timelines/latest', to: 'timelines#latest'

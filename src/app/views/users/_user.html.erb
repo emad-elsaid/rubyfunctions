@@ -11,20 +11,12 @@
           <%= link_to user.name, user_functions_path(user) %>
         </p>
         <p class="subtitle is-6">
-          <%= link_to user_github_account_url(user),  target: "_blank" do %>
+          <%= link_to user_github_url(user),  target: "_blank" do %>
             @<%= user.username %>
           <% end %>
         </p>
-        
-        <% unless current_user.nil? || user.id == current_user.id %> 
-          <% text = current_user.following?(user.id) ? "Unfollow" : "Follow" %>
-          <% method = current_user.following?(user.id) ? :delete : :post %>
-          <%= form_with model: current_user.followings.new(followee: user), method: method.to_sym, local: true do |form| %>
-            <%= form.hidden_field :followee_id %>
-            <%= form.submit text, class: "button has-text" %>
-          <% end %>
 
-        <% end %>
+        <%= render "users/follow", current_user: current_user, user: user %>
       </div>
     </div>
   </div>
