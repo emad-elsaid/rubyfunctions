@@ -8,6 +8,12 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :saves, dependent: :destroy
 
+  has_many :followings, class_name: :Followership, foreign_key: :follower_id,
+                        inverse_of: :follower, dependent: :destroy
+
+  has_many :followers, class_name: :Followership, foreign_key: :followee_id,
+                       inverse_of: :followee, dependent: :destroy
+
   def to_param
     username
   end

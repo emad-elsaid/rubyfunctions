@@ -6,3 +6,7 @@ en:
           attributes:
             code:
               syntax_error: has syntax error
+        followership:
+          attributes:
+            follower:
+              cant_follow_self: user can't follow himself
