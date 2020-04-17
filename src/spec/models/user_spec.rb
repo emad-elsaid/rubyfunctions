@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { create :user }
+  subject { create :user, github_id: 'u123' }
 
   it { is_expected.to have_many :followers }
   it { is_expected.to have_many :followings }
