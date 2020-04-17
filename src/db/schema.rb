@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 2020_04_12_003715) do
     t.bigint "follower_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["followee_id", "follower_id"], name: "index_relationships_on_followee_id_and_follower_id", unique: true
-    t.index ["followee_id"], name: "index_relationships_on_followee_id"
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["followee_id", "follower_id"], name: "index_followerships_on_followee_id_and_follower_id", unique: true
+    t.index ["followee_id"], name: "index_followerships_on_followee_id"
+    t.index ["follower_id"], name: "index_followerships_on_follower_id"
   end
 
   create_table "functions", force: :cascade do |t|
