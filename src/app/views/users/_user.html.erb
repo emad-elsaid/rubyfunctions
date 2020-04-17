@@ -11,7 +11,7 @@
           <%= link_to user.name, user_functions_path(user) %>
         </p>
         <p class="subtitle is-6">
-          <%= link_to user_github_url(user),  target: "_blank" do %>
+          <%= link_to user_github_url(user),  target: "_blank", rel: "noopener" do %>
             @<%= user.username %>
           <% end %>
         </p>
