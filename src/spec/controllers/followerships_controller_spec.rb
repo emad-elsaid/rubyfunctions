@@ -6,6 +6,14 @@ RSpec.describe FollowershipsController do
 
   before { session[:user] = current_user.id }
 
+  describe 'GET #index' do
+    it 'returns a success response' do
+      current_user.followers.create!({ follower: user })
+      get :index, params: { user_id: user }
+      expect(response).to be_successful
+    end
+  end
+
   describe 'POST #create' do
     it 'follow' do
       expect do
