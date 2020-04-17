@@ -5,8 +5,8 @@ services:
     restart: always
     env_file:
       - src/.env
-    ports:
-      - 5432:5432
+    expose:
+      - '5432'
     volumes:
       - rubyfunctions_db:/var/lib/postgresql/data
     healthcheck:
@@ -14,12 +14,15 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-      
+
   web:
-    build: src/
+    build:
+      context: src/
+      dockerfile: Dockerfile-dev
     entrypoint: /app/bin/entrypoint.sh
     volumes:
       - ./src/:/app
+      - gems:/gems
     depends_on:
       - db
     links:
@@ -29,5 +32,6 @@ services:
       - 3000:3000
     env_file:
       - src/.env
-volumes: 
+volumes:
   rubyfunctions_db:
+  gems:
