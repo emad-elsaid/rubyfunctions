@@ -1,28 +1,31 @@
 raise 'Seeding is reserved for development' unless Rails.env.development?
 
-puts 'Creating users...'
+logger = Logger.new(STDOUT)
+logger.level = Logger::DEBUG
+
+logger.info 'Creating users...'
 users = FactoryBot.create_list(:user, 100)
 
-puts 'Creating functions...'
+logger.info 'Creating functions...'
 functions = users.map do |user|
   FactoryBot.create_list(:function, 10, user: user)
 end.flatten
 
-puts 'Creating likes...'
+logger.info 'Creating likes...'
 users.sample(50).each do |user|
   functions.sample(30).each do |function|
     FactoryBot.create(:like, user: user, likeable: function)
   end
 end
 
-puts 'Creating saves...'
+logger.info 'Creating saves...'
 users.sample(50).each do |user|
   functions.sample(30).each do |function|
     FactoryBot.create(:save, user: user, function: function)
   end
 end
 
-puts 'Creating comments...'
+logger.info 'Creating comments...'
 users.sample(50).each do |user|
   functions.sample(30).each do |function|
     FactoryBot.create(:comment, user: user, function: function)

@@ -7,6 +7,6 @@ yarn install --check-files
 bundle config set with 'development test'
 bundle install
 
-bundle exec rails db:prepare
+bundle exec rails db:create db:migrate
 
 bundle exec rails s -b 0.0.0.0 -p 3000
