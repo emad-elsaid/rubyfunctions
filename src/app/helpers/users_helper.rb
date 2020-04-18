@@ -9,6 +9,6 @@ module UsersHelper
 
   def show_actions?
     page_title = content_for(:title).to_param
-    page_title && !page_title.include?("Followers")
+    page_title && !page_title.include?('Followers')
   end
 end
