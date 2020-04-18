@@ -13,6 +13,7 @@ module PermissionsConcern
     when Comment then comment_can?(model, action)
     when Like then like_can?(model, action)
     when Save then save_can?(model, action)
+    when Followership then followership_can?(model, action)
     else raise ObjectPermissionsMissing, model
     end
   end
@@ -43,6 +44,12 @@ module PermissionsConcern
   def save_can?(model, action)
     case action
     when :create, :destroy then current_user && current_user == model.user
+    end
+  end
+
+  def followership_can?(model, action)
+    case action
+    when :create, :destroy then current_user && current_user == model.follower
     end
   end
 end
