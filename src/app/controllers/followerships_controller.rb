@@ -1,4 +1,6 @@
 class FollowershipsController < ApplicationController
+  layout 'users'
+
   before_action :set_user
   before_action :set_followership, only: %(destroy)
 
