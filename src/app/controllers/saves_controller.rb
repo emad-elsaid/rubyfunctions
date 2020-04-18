@@ -1,5 +1,5 @@
 class SavesController < ApplicationController
-  layout 'users', only: %(index)
+  layout 'users', only: %i[index]
 
   before_action :set_user, only: %i[index create destroy]
   before_action :set_function, only: %i[create destroy]

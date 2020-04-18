@@ -1,5 +1,5 @@
 class FunctionsController < ApplicationController
-  layout 'users', only: %(index)
+  layout 'users', only: %i[index]
 
   before_action :set_user
   before_action :set_function, only: %i[show edit update destroy]
