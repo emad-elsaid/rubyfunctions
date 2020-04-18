@@ -3,7 +3,6 @@ class FollowershipsController < ApplicationController
 
   before_action :set_user
   before_action :set_followership, only: %i[destroy]
-  before_action :set_followership, only: %i[destroy]
   before_action :check_permission, only: %i[destroy]
 
   LIMIT = 30
