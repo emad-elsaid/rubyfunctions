@@ -140,4 +140,22 @@ shared_examples_for 'PermissionsConcern' do
       it { expect(controller.can?(save, :destroy)).to be_falsy }
     end
   end
+
+  describe 'Followership' do
+    context 'for follower' do
+      let(:followership) { create :followership }
+      let(:user) { followership.follower }
+
+      it { expect(controller.can?(followership, :create)).to be_truthy }
+      it { expect(controller.can?(followership, :destroy)).to be_truthy }
+    end
+
+    context 'for followee' do
+      let(:followership) { create :followership }
+      let(:user) { followership.followee }
+
+      it { expect(controller.can?(followership, :create)).to be_falsey }
+      it { expect(controller.can?(followership, :destroy)).to be_falsey }
+    end
+  end
 end
