@@ -19,7 +19,6 @@ services:
     build:
       context: src/
       dockerfile: Dockerfile-dev
-    entrypoint: /app/bin/entrypoint.sh
     volumes:
       - ./src/:/app
       - gems:/gems

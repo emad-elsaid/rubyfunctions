@@ -42,34 +42,22 @@ and use it if we need to.
 
 1. cd to `src`
 1. Create a github application for github login feature from [here](https://github.com/settings/developers) and set the callback URL to `http://localhost:3000/github/new`
-1. copy `.env.sample` to `.env` and fill in the non-production variables and remove the rest.
-1. make sure the variables in `.env` file is loaded to your shell, you can use [autoenv](https://github.com/inishchith/autoenv) for that
-1. review `config/database.yml` development section to make sure it connects to your postgres server
-1. run `rails db:setup`
-1. make sure `rspec` passes
-1. run the server with `rails s`
-1. have run developing your feature
-
+1. Copy `.env.sample` to `.env` and fill in the non-production variables and remove the rest.
+1. Make sure the variables in `.env` file is loaded to your shell, you can use [autoenv](https://github.com/inishchith/autoenv) for that
+1. Run `rails db:setup`
+1. Make sure `rspec` passes
+1. Run the server with `rails s`
+1. Have fun developing your feature
 
 # Using Docker
 
-- clone **.env.sample** file, and fill in the non-production variables and remove the rest.
-```sh
-$ cp src/.env.sample src/.env
-```
-
-- up and build project in docker
-```
-$ docker-compose -f docker-compose-dev.yml up --build
-```
-- run specs
-```
-$ docker-compose -f docker-compose-dev.yml exec web rspec
-```
-- logging into web container
-```
-$ docker-compose -f docker-compose-dev.yml exec web bash
-```
+1. Create a github application for github login feature from [here](https://github.com/settings/developers) and set the callback URL to `http://localhost:3000/github/new`
+1. Copy `src/.env.sample` to `src/.env` and fill in the non-production variables and remove the rest.
+1. Get a shell inside the web service container using docker-compose `docker-compose -f docker-compose-dev.yml run -p 3000:3000 web bash`
+1. Run `rails db:setup`
+1. Make sure `rspec` passes
+1. Run the server with `rails s -b 0.0.0.0`
+1. Have run developing your feature
 
 # Things the project is trying to avoid
 
