@@ -27,7 +27,7 @@
       <li>
     <% end %>
     <%= link_to user_followers_path(user), title: 'Saved functions' do %>
-        Followers (<%= user.followers.count %>)
+        Followers (<%= user.followers.size %>)
     <% end %>
     </li>
   </ul>
