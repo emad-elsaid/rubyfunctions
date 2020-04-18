@@ -1,0 +1,6 @@
+<%= render 'layouts/main' do %>
+    <%= render 'users/actions', user: @user if current_user && @user != current_user %>
+    <%= render @user %>
+    <%= render 'users/tabs', user: @user %>
+    <%= yield %>
+<% end %>

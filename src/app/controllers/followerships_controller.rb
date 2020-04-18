@@ -1,7 +1,17 @@
 class FollowershipsController < ApplicationController
+  layout 'users'
+
   before_action :set_user
   before_action :set_followership, only: %i[destroy]
   before_action :check_permission, only: %i[destroy]
+
+  LIMIT = 30
+
+  def index
+    offset = params.fetch(:offset, 0).to_i
+    @followers = @user.followers.includes(:follower).limit(LIMIT).offset(offset).order(created_at: :desc).all
+    @next = offset + LIMIT if @followers.size == LIMIT
+  end
 
   def create
     @followership = current_user.followings.new(followee: @user)

@@ -1,5 +1,0 @@
-<% if current_user && user != current_user %> 
-    <%= link_to_if follows?(user), 'Unfollow', user_followerships_path(user), class: 'button has-text', method: :delete do  %>
-       <%= link_to 'Follow', user_followerships_path(user), class: 'button has-text', method: :post  %>
-    <% end %>
-<% end %>

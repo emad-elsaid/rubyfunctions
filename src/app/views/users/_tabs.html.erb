@@ -19,5 +19,16 @@
         Saved Functions
     <% end %>
     </li>
+
+
+    <% if current_page?(controller: 'followerships', action: 'index')%>
+      <li class="is-active">
+    <% else %>
+      <li>
+    <% end %>
+    <%= link_to user_followers_path(user), title: 'Saved functions' do %>
+        Followers (<%= user.followers.size %>)
+    <% end %>
+    </li>
   </ul>
 </div>

@@ -1,7 +1,5 @@
 <%= content_for :title, @user.name %>
 
-<%= render @user %>
-<%= render 'users/tabs', user: @user %>
 <%= render 'saves', saves: @saves, user: @user %>
 
 <% if @saves.empty? %>
