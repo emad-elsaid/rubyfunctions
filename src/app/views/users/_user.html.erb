@@ -15,8 +15,9 @@
             @<%= user.username %>
           <% end %>
         </p>
-
-        <%= render "users/follow", current_user: current_user, user: user %>
+        <% if show_actions?  %>
+          <%= render "users/actions", user: user %>
+        <% end %>
       </div>
     </div>
   </div>
