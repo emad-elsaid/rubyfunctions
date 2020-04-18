@@ -15,8 +15,11 @@ class SavesController < ApplicationController
     @save = current_user.saves.new(function: @function)
     raise UnauthorizedException unless can?(@save, action_name.to_sym)
 
-    @save.save
-    redirect_back fallback_location: [@user, @function]
+    if @save.save
+      redirect_back fallback_location: [@user, @function]
+    else
+      redirect_back fallback_location: [@user, @function], alert: @save.errors.full_messages
+    end
   end
 
   def destroy

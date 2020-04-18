@@ -16,6 +16,7 @@ gem 'webpacker', '~> 5.0'
 
 group :development, :test do
   gem 'factory_bot_rails'
+  gem 'faker'
   gem 'pry-rails'
   gem 'rspec-rails'
 end
@@ -27,7 +28,6 @@ end
 
 group :test do
   gem 'codecov', require: false
-  gem 'faker'
   gem 'shoulda-matchers'
 end
 

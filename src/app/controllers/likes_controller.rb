@@ -6,8 +6,11 @@ class LikesController < ApplicationController
     @like = @function.likes.new(user: current_user)
     raise UnauthorizedException unless can?(@like, action_name.to_sym)
 
-    @like.save
-    redirect_back fallback_location: [@user, @function]
+    if @like.save
+      redirect_back fallback_location: [@user, @function]
+    else
+      redirect_back fallback_location: [@user, @function], alert: @like.errors.full_messages
+    end
   end
 
   def destroy
