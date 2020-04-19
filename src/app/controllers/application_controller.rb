@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
+  include SentryConcern if Rails.env.production?
   include PermissionsConcern
-
-  before_action :set_raven_context if Rails.env.production?
 
   rescue_from UnauthorizedException, with: :unauthorized
 
@@ -12,12 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def set_raven_context
-    return unless current_user
-
-    Raven.user_context(user: current_user.username)
-  end
 
   def unauthorized
     redirect_to root_path, alert: 'You do not have enough permissions to perform this action'
