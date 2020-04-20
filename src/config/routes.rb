@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :saves, only: :index
     resource :followerships, only: %i[create destroy]
     get :followers, action: :index, controller: :followerships
+    get :followings, action: :followings, controller: :followerships
   end
 
   resource :github, only: [:new]

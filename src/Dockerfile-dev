@@ -8,4 +8,8 @@ ENV app /app
 RUN mkdir -p $app
 WORKDIR $app
 
+COPY Gemfile* /app/
+WORKDIR /app
+
 ENV BUNDLE_PATH /gems
+RUN bundle install
