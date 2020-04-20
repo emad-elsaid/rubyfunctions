@@ -21,6 +21,12 @@ RSpec.describe FunctionsController, type: :controller do
       get :show, params: { id: function, user_id: user }
       expect(response).to be_successful
     end
+
+    it 'respond with the function file when the request url is ended with .rb' do
+      function = user.functions.create! valid_attributes
+      get :show, params: { id: function, user_id: user }, format: :rb
+      expect(response.content_type).to eq 'text/ruby; charset=utf-8'
+    end
   end
 
   describe 'GET #new' do
