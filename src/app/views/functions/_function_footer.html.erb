@@ -12,4 +12,6 @@
 
   <%= link_to icon('fas fa-edit') + 'Edit', edit_user_function_path(function.user, function), class: 'card-footer-item' if can?(function, :edit) %>
   <%= link_to icon('fas fa-trash') + 'Delete', [function.user, function], method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-footer-item has-text-danger' if can?(function, :destroy) %>
+  <%= link_to icon('far fa-save') + 'Download', user_function_path(function.user, function, format: :rb), class: 'card-footer-item has-text-grey' %>
+
 </div>
