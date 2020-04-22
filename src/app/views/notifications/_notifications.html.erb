@@ -1,0 +1,3 @@
+<%= render notifications %>
+
+<%= link_to 'Load More', notifications_path(offset: @next, state: @state), remote: true, class: 'button is-fullwidth more' if @next %>

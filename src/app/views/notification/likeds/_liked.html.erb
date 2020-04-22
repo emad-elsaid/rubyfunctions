@@ -1,0 +1,4 @@
+<%= link_to notification_path(liked), class: "box is-shadowless notification is-light #{ 'is-info' unless liked.read_at? }" do %>
+  <%= icon('fas fa-thumbs-up') %>
+  <strong><%= liked.actor.name%></strong> liked your function <strong><%= liked.notifiable.name %></strong>
+<% end %>

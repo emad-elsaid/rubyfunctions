@@ -15,6 +15,7 @@ logger.info 'Creating likes...'
 users.sample(50).each do |user|
   functions.sample(30).each do |function|
     FactoryBot.create(:like, user: user, likeable: function)
+    FactoryBot.create(:notification, recipient: function.user, actor: user, notifiable: function)
   end
 end
 
@@ -29,5 +30,7 @@ logger.info 'Creating comments...'
 users.sample(50).each do |user|
   functions.sample(30).each do |function|
     FactoryBot.create(:comment, user: user, function: function)
+    FactoryBot.create(:notification, recipient: function.user, actor: user,
+                                     notifiable: function, type: 'Notification::Commented')
   end
 end

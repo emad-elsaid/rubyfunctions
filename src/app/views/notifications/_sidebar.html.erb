@@ -1,0 +1,7 @@
+<div class="column is-one-quarter">
+  <nav class="panel has-background-white is-shadowless">
+    <%= link_to 'All', notifications_path, class: ['panel-block', ('has-background-light' if @state == 'all' || @state.nil?) ] %>
+    <%= link_to 'Unread', notifications_path(state: 'unread'), class: ['panel-block', ('has-background-light' if @state == 'unread') ] %>
+    <%= link_to 'Read', notifications_path(state: 'read'), class: ['panel-block', ('has-background-light' if @state == 'read') ] %>
+  </nav>
+</div>
