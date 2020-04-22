@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
     check_permission
 
     if @comment.save
+      notify_user
       redirect_to [@user, @function], notice: 'Your comment was successfully created.'
     else
       redirect_to [@user, @function], alert: @comment.errors.full_messages
@@ -50,5 +51,9 @@ class CommentsController < ApplicationController
 
   def check_permission
     raise UnauthorizedException unless can?(@comment, action_name.to_sym)
+  end
+
+  def notify_user
+    Notification::Commented.create(recipient: @function.user, actor: current_user)
   end
 end

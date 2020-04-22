@@ -7,6 +7,7 @@ class LikesController < ApplicationController
     raise UnauthorizedException unless can?(@like, action_name.to_sym)
 
     if @like.save
+      notify_user
       redirect_back fallback_location: [@user, @function]
     else
       redirect_back fallback_location: [@user, @function], alert: @like.errors.full_messages
@@ -29,5 +30,9 @@ class LikesController < ApplicationController
 
   def set_function
     @function = @user.functions.from_param(params[:function_id]) || raise(ActiveRecord::RecordNotFound)
+  end
+
+  def notify_user
+    Notification::Liked.create(recipient: @function.user, actor: current_user)
   end
 end

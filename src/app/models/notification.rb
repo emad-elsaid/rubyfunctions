@@ -1,0 +1,2 @@
+module Notification
+end
