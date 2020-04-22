@@ -4,7 +4,7 @@
   "dependencies": {
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "5.1.1",
-    "codemirror": "^5.52.2"
+    "codemirror": "^5.53.2"
   },
   "version": "0.1.0",
   "devDependencies": {
