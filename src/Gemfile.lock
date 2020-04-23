@@ -91,7 +91,8 @@ GEM
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
     json (2.3.0)
-    kramdown (2.1.0)
+    kramdown (2.2.0)
+      rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     listen (3.2.1)
