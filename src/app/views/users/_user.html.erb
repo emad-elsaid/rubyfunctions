@@ -2,17 +2,18 @@
   <div class="card-content">
     <div class="media">
       <div class="media-left">
-        <figure class="image is-128x128">
+        <figure class="image is-64x64">
           <%= link_to image_tag(user_image_url(user)), user_functions_path(user) %>
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-4">
-          <%= link_to user.name, user_functions_path(user) %>
+        <p>
+          <strong> <%= link_to user.name, user_functions_path(user) %> </strong>
+          <small>· @<%= user.name %> </small>
         </p>
-        <p class="subtitle is-6">
-          <%= link_to user_github_url(user),  target: "_blank", rel: "noopener" do %>
-            @<%= user.username %>
+        <p>
+          <%= link_to user_github_url(user), target: '_blank', rel: 'noopener' do %>
+            <%= icon('fab fa-github') %> <span>Github</span>
           <% end %>
         </p>
       </div>
