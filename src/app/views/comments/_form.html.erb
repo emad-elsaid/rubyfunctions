@@ -1,12 +1,25 @@
-<%= form_with(model: comment, url: [comment.function.user, comment.function, comment], local: true, html: { class: 'form' }) do |form| %>
-
-  <div class="field">
-    <div class="control"> <%= form.text_area :content, rows: 4, class: :textarea, id: 'comment' %> </div>
-  </div>
-
-  <div class="field is-grouped">
-    <div class="control">
-      <%= form.submit class: 'button is-link' %>
+<div class="box is-shadowless">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <%= image_tag user_image_url(current_user), class: 'is-rounded' %>
+      </figure>
     </div>
-  </div>
-<% end %>
+    <div class="media-content">
+
+      <%= form_with(model: comment, url: [comment.function.user, comment.function, comment], local: true, html: { class: 'form' }) do |form| %>
+
+        <div class="field">
+          <div class="control"> <%= form.text_area :content, rows: 4, class: :textarea, id: 'comment' %> </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <%= form.submit class: 'button is-link' %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </article>
+</div>
