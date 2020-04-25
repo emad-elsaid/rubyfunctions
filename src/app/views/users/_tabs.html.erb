@@ -6,17 +6,17 @@
       <li>
     <% end %>
     <%= link_to user_functions_path(user), title: 'Saved functions' do %>
-        Published functions
+      Published functions (<%= user.functions.size %>)
     <% end %>
     </li>
 
     <% if current_page?(controller: 'saves', action: 'index')%>
       <li class="is-active">
     <% else %>
-      <li>
+        <li>
     <% end %>
     <%= link_to user_saves_path(user), title: 'Saved functions' do %>
-        Saved Functions
+      Saved Functions (<%= user.saves.size %>)
     <% end %>
     </li>
 
@@ -27,7 +27,7 @@
       <li>
     <% end %>
     <%= link_to user_followers_path(user), title: 'Saved functions' do %>
-        Followers (<%= user.followers.size %>)
+      Followers (<%= user.followers.size %>)
     <% end %>
     </li>
   </ul>
