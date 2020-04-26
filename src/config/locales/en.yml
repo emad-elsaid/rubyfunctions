@@ -6,6 +6,8 @@ en:
           attributes:
             code:
               syntax_error: has syntax error
+              many_functions: defines more than one function, only one function is allowed in code
+              no_functions: doesn't have any functions, one function is required in code
         followership:
           attributes:
             follower:

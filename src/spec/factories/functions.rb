@@ -9,9 +9,7 @@ FactoryBot.define do
     end
 
     after(:build) do |function|
-      function.send(:extract_function_name)
-    rescue SyntaxError
-      nil
+      function.name = Code.new(function.code).functions.first
     end
   end
 end
