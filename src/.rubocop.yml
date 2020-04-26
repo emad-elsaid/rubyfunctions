@@ -12,6 +12,10 @@ Lint/StructNewOverride:
   Enabled: true
 Lint/RaiseException:
   Enabled: true
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+Style/ExponentialNotation:
+  Enabled: true
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 Metrics/BlockLength:
