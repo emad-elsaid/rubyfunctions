@@ -10,6 +10,6 @@ class NotificationsController < ApplicationController
   def show
     @notification = current_user.notifications.find(params[:id]) || raise(ActiveRecord::RecordNotFound)
     @notification.update!(read_at: DateTime.now) unless @notification.read_at
-    redirect_to @notification
+    redirect_to helpers.notification_liked_url(@notification)
   end
 end

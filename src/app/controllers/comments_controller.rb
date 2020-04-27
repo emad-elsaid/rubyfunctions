@@ -54,6 +54,6 @@ class CommentsController < ApplicationController
   end
 
   def notify_user
-    Notification::Commented.create(recipient: @function.user, actor: current_user)
+    Notification::Commented.create(recipient: @function.user, actor: current_user, notifiable_id: @function.id)
   end
 end

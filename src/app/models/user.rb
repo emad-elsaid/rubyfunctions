@@ -11,9 +11,6 @@ class User < ApplicationRecord
   has_many :notifications, foreign_key: :recipient_id, inverse_of: :recipient,
                            class_name: 'Notification::Notification', dependent: :destroy
 
-  has_many :notifications, foreign_key: :recipient_id, inverse_of: :recipient,
-                           dependent: :destroy
-
   has_many :followings, class_name: :Followership, foreign_key: :follower_id,
                         inverse_of: :follower, dependent: :destroy
 

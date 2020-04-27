@@ -33,6 +33,6 @@ class LikesController < ApplicationController
   end
 
   def notify_user
-    Notification::Liked.create(recipient: @function.user, actor: current_user)
+    Notification::Liked.create(recipient: @function.user, actor: current_user, notifiable_id: @function.id)
   end
 end
