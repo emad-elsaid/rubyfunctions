@@ -4,6 +4,7 @@ RSpec.describe NotificationsController do
   let(:function) { create :function }
   let(:current_user) { function.user }
   let(:user) { create :user }
+  let(:notification) { create(:notification, notifiable: function, actor: user, recipient: current_user) }
 
   before { session[:user] = current_user.id }
 
@@ -15,18 +16,14 @@ RSpec.describe NotificationsController do
   end
 
   describe 'GET #show' do
-    before do
-      old_controller = @controller
-      session[:user] = user.id
-      @controller = LikesController.new
-      post :create, params: { function_id: function, user_id: current_user }
-      session[:user] = current_user.id
-      @controller = old_controller
+    it 'marks notification as read' do
+      get :show, params: { id: notification }
+      expect(current_user.notifications.first.read_at).not_to eq(nil)
     end
 
-    it 'returns unread notifications' do
-      get :show, params: { id: current_user.notifications.first }
-      expect(response).to redirect_to(user_function_url(id: function, user_id: function.user))
+    it 'redirect likes on functions to functions' do
+      get :show, params: { id: notification }
+      expect(response).to redirect_to(user_function_url(id: notification.notifiable, user_id: notification.recipient))
     end
   end
 end

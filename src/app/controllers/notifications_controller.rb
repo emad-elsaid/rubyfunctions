@@ -1,6 +1,8 @@
 class NotificationsController < ApplicationController
   LIMIT = 30
 
+  before_action :check_permission
+
   def index
     offset = params.fetch(:offset, 0).to_i
     @notifications = current_user.notifications.limit(LIMIT).offset(offset).order(created_at: :desc)
@@ -11,5 +13,11 @@ class NotificationsController < ApplicationController
     @notification = current_user.notifications.find(params[:id]) || raise(ActiveRecord::RecordNotFound)
     @notification.update!(read_at: DateTime.now) unless @notification.read_at
     redirect_to helpers.notification_liked_url(@notification)
+  end
+
+  private
+
+  def check_permission
+    raise UnauthorizedException if current_user.nil?
   end
 end
