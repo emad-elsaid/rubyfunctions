@@ -8,7 +8,7 @@ RSpec.describe SavesHelper do
 
     before { session[:user] = current_user.id }
 
-    context 'when user did not save the function' do
+    context 'return number of unread notifications only' do
       let(:num_of_notifications) { 5 }
       let(:num_of_read_notifications) { 2 }
       let(:num_of_unread_notifications) { 3 }

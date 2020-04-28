@@ -44,7 +44,7 @@
             
             <%= link_to notifications_path , class: 'button is-white' do %>
               <%= icon('far fa-bell fa-lg') %>
-              <span class="badge"><%= unread_notifications unless unread_notifications == 0 %></span>
+              <span class="badge"><%= unread_notifications(current_user)  unless unread_notifications(current_user) == 0 %></span>
             <% end %>
 
             <%= link_to new_user_function_path(current_user), class: 'button is-link' do %>

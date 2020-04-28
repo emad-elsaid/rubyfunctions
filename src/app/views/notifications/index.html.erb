@@ -1,2 +1,4 @@
-<h1>Notifications#index</h1>
-<p>Find me in app/views/notifications/index.html.erb</p>
+<%= render partial: 'notification', collection: @notifications %>
+
+<%= link_to 'Load More', notifcations_path(current_user, offset: @next), remote: true, class: 'button is-fullwidth more' if @next %>
+
