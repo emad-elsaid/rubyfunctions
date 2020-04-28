@@ -31,3 +31,10 @@ users.sample(50).each do |user|
     FactoryBot.create(:comment, user: user, function: function)
   end
 end
+
+logger.info 'Creating notifications...'
+users.sample(50).each do |user|
+  functions.sample(30).each do |function|
+    FactoryBot.create(:notification, recipient: function.user, actor: user, notifiable: function)
+  end
+end
