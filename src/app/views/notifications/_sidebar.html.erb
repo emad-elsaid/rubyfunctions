@@ -1,0 +1,7 @@
+<div class="column is-one-quarter">
+  <nav class="panel has-background-white is-shadowless">
+    <%= link_to 'All', notifications_path(state: 'all'), class: ['panel-block', ('is-active' if action_name == 'all') ] %>
+    <%= link_to 'Unread', notifications_path(state: 'unread'), class: ['panel-block', ('is-active' if action_name == 'uread') ] %>
+    <%= link_to 'Read', notifications_path(state: 'read'), class: ['panel-block', ('is-active' if action_name == 'read') ] %>
+  </nav>
+</div>

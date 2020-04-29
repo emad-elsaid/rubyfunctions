@@ -1,4 +1,9 @@
-<%= render partial: 'notification', collection: @notifications %>
+<div class="columns">
+  <%= render 'sidebar' %>
+  <div class="column">
+    <%= render partial: 'notification', collection: @notifications %>
+  </div>
+</div >
 
 <%= link_to 'Load More', notifcations_path(current_user, offset: @next), remote: true, class: 'button is-fullwidth more' if @next %>
 

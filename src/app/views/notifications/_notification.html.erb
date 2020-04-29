@@ -1,11 +1,8 @@
-<div>
-  <% if notification.type == 'Notification::Liked' %>
-    <%= link_to notification.actor.name, user_functions_path(notification.actor) %>
-    <%= notification.type.split('::').last.downcase %>
-    <%= link_to notification.notifiable.name, user_function_path(notification.notifiable.user, notification.notifiable) %>
-  <% else %>
-    <%= link_to notification.actor.name, user_functions_path(notification.actor) %>
-    <%= notification.type.split('::').last.downcase %> on
-    <%= link_to notification.notifiable.name, user_function_path(notification.notifiable.user, notification.notifiable) %>
-  <% end %>
+<div class="container">
+  <div class="notification <%= 'read' unless unread? notification %>">
+    <%= link_to '', notification_path(notification), class: 'show-notification'%>
+    <%= link_to notification.actor.name, user_functions_path(notification.actor), class: 'notification-info actor' %>
+    <div class="notification-info"> <%= notification.type.split('::').last.downcase %> </div>
+    <%= link_to notification.notifiable.name, user_function_path(notification.notifiable.user, notification.notifiable), class: 'notification-info' %>
+  </div>
 </div>
