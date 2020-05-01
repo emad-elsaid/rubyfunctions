@@ -7,8 +7,4 @@ module NotificationsHelper
   def unread_notifications(user)
     user.notifications.unread.count
   end
-
-  def unread?(notification)
-    notification.read_at.nil?
-  end
 end

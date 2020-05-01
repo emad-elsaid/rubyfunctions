@@ -1,9 +1,11 @@
 <div class="columns">
   <%= render 'sidebar' %>
   <div class="column">
-    <%= render partial: 'notification', collection: @notifications %>
+    <div class="card is-shadowless">
+      <div class="card-content">
+        <%= render @notifications %>
+        <%= link_to 'Load More', notifications_path(current_user, offset: @next), remote: true, class: 'button is-fullwidth more' if @next %>
+      </div>
+    </div>
   </div>
 </div >
-
-<%= link_to 'Load More', notifcations_path(current_user, offset: @next), remote: true, class: 'button is-fullwidth more' if @next %>
-
