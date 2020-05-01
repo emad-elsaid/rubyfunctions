@@ -1,4 +1,6 @@
 class NotificationsController < ApplicationController
+  include NotificationsHelper
+
   LIMIT = 30
 
   before_action :check_permission
@@ -12,7 +14,7 @@ class NotificationsController < ApplicationController
   def show
     @notification = current_user.notifications.find(params[:id]) || raise(ActiveRecord::RecordNotFound)
     @notification.update!(read_at: DateTime.now) unless @notification.read_at
-    redirect_to helpers.notification_liked_url(@notification)
+    redirect_to @notification
   end
 
   private
