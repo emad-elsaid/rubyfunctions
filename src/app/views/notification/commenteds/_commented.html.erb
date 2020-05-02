@@ -1,0 +1,4 @@
+<%= link_to notification_path(commented), class: "box is-shadowless notification is-light #{ 'is-info' unless commented.read_at? }" do %>
+  <%= icon('fas fa-comment') %>
+  <strong><%= commented.actor.name%></strong> commented on your function <strong><%= commented.notifiable.name %></strong>
+<% end %>

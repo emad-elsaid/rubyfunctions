@@ -12,6 +12,7 @@ RSpec.describe LikesController do
       expect do
         post :create, params: { function_id: function, user_id: user }
       end.to change(Like, :count).by(1)
+                                 .and change(Notification::Notification, :count).by(1)
     end
   end
 
