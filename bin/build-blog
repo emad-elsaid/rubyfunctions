@@ -1,7 +1,11 @@
+#!/usr/bin/env bash
+# Usage: build-blog <blog directory>
+BLOG_DIR="$(realpath $1)"
+
 docker run --rm\
  -e BUNDLE_PATH="/usr/local/bundle"\
  -p 4000:4000\
- --volume="$PWD/../blog:/srv/jekyll"\
+ --volume="$BLOG_DIR:/srv/jekyll"\
  --volume="gems:/usr/local/bundle/" \
  -it jekyll/jekyll:4.0\
- jekyll build
+ jekyll build --incremental
