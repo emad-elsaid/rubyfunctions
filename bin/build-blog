@@ -1,0 +1,7 @@
+docker run --rm\
+ -e BUNDLE_PATH="/usr/local/bundle"\
+ -p 4000:4000\
+ --volume="$PWD/../blog:/srv/jekyll"\
+ --volume="gems:/usr/local/bundle/" \
+ -it jekyll/jekyll:4.0\
+ jekyll build
