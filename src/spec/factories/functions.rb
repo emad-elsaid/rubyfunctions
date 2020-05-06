@@ -4,6 +4,8 @@ FactoryBot.define do
     sequence(:code) { |n| "def foo#{n}; end" }
     association :user
 
+    tags { |tag| [tag.association(:tag)] }
+
     trait :invalid_name do
       sequence(:code) { |n| "def #{n}foo; end" }
     end

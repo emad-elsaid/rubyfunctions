@@ -4,6 +4,8 @@ en:
       models:
         function:
           attributes:
+            tags:
+              maximum_tags_exceeded: maximum number of tags has been exceeded, use 3 or less tags
             code:
               syntax_error: has syntax error
               many_functions: defines more than one function, only one function is allowed in code

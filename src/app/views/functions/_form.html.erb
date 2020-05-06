@@ -19,6 +19,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :tags_list, class: :label %>
+    <div class="control"> <%= form.text_field :tags_list, placeholder: 'Up to 3 tags. Comma seprated.' %> </div>
+  </div>
+
+  <div class="field">
     <%= form.label :code, class: :label %>
     <div class="control"> <%= form.text_area :code, rows: 20, class: [:textarea, :codemirror] %> </div>
   </div>
