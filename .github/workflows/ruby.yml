@@ -29,9 +29,14 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6.x
-      - uses: borales/actions-yarn@v2.0.0
+      - name: Gems cache
+        uses: actions/cache@v1
         with:
-          cmd: install
+          path: ./vendor/bundle
+          key: gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            gem-
+
       - name: Build and run tests
         env:
           RAILS_ENV: test
@@ -42,6 +47,7 @@ jobs:
         run: |
           sudo apt-get -yqq install libpq-dev
           gem install bundler
+          bundle config path ../vendor/bundle
           bundle install --jobs 4 --retry 3
           bundle exec rails db:create
           bundle exec rubocop
