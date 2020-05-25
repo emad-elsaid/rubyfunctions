@@ -29,9 +29,6 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6.x
-      # - uses: borales/actions-yarn@v2.0.0
-      #   with:
-      #     cmd: install
       - name: Gems cache
         uses: actions/cache@v1
         with:
