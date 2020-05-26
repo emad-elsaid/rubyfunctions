@@ -42,7 +42,7 @@
 
           <% if current_user %>
 
-            <%= link_to notifications_path , class: 'button is-white' do %>
+            <%= link_to notifications_path(state: :unread) , class: 'button is-white' do %>
               <%= icon('far fa-bell') %>
               <span class="tag is-danger is-small is-rounded"><%= unread_notifications(current_user)  unless unread_notifications(current_user) == 0 %></span>
             <% end %>

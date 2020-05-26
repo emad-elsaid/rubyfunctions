@@ -1,4 +1,7 @@
 <div class="column is-one-quarter">
+  <div class="content">
+    <%= link_to 'Mark all as read', read_all_notifications_path, class: ['button is-fullwidth'], method: :post %>
+  </div>
   <nav class="panel has-background-white is-shadowless">
     <%= link_to 'All', notifications_path, class: ['panel-block', ('has-background-light' if @state == 'all' || @state.nil?) ] %>
     <%= link_to 'Unread', notifications_path(state: 'unread'), class: ['panel-block', ('has-background-light' if @state == 'unread') ] %>

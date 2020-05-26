@@ -18,6 +18,11 @@ class NotificationsController < ApplicationController
     redirect_to @notification
   end
 
+  def read_all
+    get_notifications('unread').find_each { |u| u.update(read_at: DateTime.now) }
+    redirect_to action: :index, state: :unread
+  end
+
   private
 
   def check_permission

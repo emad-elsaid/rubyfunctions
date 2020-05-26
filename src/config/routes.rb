@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   resource :github, only: [:new]
   resource :session, only: [:destroy]
 
-  resources :notifications, only: %i[show index]
+  resources :notifications, only: %i[show index] do
+    post :read_all, as: :read_all, on: :collection
+  end
 
   get 'timelines/latest', to: 'timelines#latest'
   get 'timelines/liked', to: 'timelines#liked'

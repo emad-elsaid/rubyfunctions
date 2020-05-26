@@ -26,4 +26,17 @@ RSpec.describe NotificationsController do
       expect(response).to redirect_to(user_function_url(id: notification.notifiable, user_id: notification.recipient))
     end
   end
+
+  describe 'POST #read_all' do
+    before { notification }
+    it 'marks all notifications as read' do
+      post :read_all
+      expect(current_user.notifications.unread).to be_empty
+    end
+
+    it 'readirect to unread notifications' do
+      post :read_all
+      expect(response).to redirect_to(action: :index, state: :unread)
+    end
+  end
 end
