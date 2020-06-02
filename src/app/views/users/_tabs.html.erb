@@ -21,13 +21,23 @@
     </li>
 
 
-    <% if current_page?(controller: 'followerships', action: 'index')%>
+    <% if current_page?(controller: 'followerships', action: 'index', relationship: :followers)%>
+      <li class="is-active">
+    <% else %>
+        <li>
+    <% end %>
+    <%= link_to user_followerships_path(user, relationship: :followers), title: 'Followers' do %>
+      Followers (<%= user.followers.size %>)
+    <% end %>
+    </li>
+
+    <% if current_page?(controller: 'followerships', action: 'index', relationship: :followees)%>
       <li class="is-active">
     <% else %>
       <li>
     <% end %>
-    <%= link_to user_followers_path(user), title: 'Followers functions' do %>
-      Followers (<%= user.followers.size %>)
+    <%= link_to user_followerships_path(user, relationship: :followees), title: 'Followees' do %>
+      Followees (<%= user.followees.size %>)
     <% end %>
     </li>
   </ul>

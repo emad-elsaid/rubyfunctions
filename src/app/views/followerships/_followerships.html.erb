@@ -1,0 +1,3 @@
+<%= render users %>
+
+<%= link_to 'Load More', url_for(offset: @next, relationship: params[:relationship]), remote: true, class: 'button is-fullwidth more' if @next %>

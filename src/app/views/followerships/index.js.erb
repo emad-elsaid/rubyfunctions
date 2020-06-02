@@ -1,4 +1,4 @@
 var el = document.querySelector('a.more');
 var newEl = document.createElement('div');
-newEl.innerHTML = '<%= escape_javascript(render 'followers', users: @followers) %>';
+newEl.innerHTML = '<%= escape_javascript(render 'followerships', users: @users) %>';
 el.parentNode.replaceChild(newEl, el);

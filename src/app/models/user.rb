@@ -11,11 +11,20 @@ class User < ApplicationRecord
   has_many :notifications, foreign_key: :recipient_id, inverse_of: :recipient,
                            class_name: 'Notification::Notification', dependent: :destroy
 
-  has_many :followings, class_name: :Followership, foreign_key: :follower_id,
-                        inverse_of: :follower, dependent: :destroy
+  has_many :following_followerships,
+           class_name: :Followership,
+           foreign_key: :follower_id,
+           inverse_of: :follower,
+           dependent: :destroy
 
-  has_many :followers, class_name: :Followership, foreign_key: :followee_id,
-                       inverse_of: :followee, dependent: :destroy
+  has_many :follower_followerships,
+           class_name: :Followership,
+           foreign_key: :followee_id,
+           inverse_of: :followee,
+           dependent: :destroy
+
+  has_many :followees, class_name: :User, through: :following_followerships
+  has_many :followers, class_name: :User, through: :follower_followerships
 
   def to_param
     username

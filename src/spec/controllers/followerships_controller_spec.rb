@@ -7,9 +7,15 @@ RSpec.describe FollowershipsController do
   before { session[:user] = current_user.id }
 
   describe 'GET #index' do
-    it 'returns a success response' do
-      current_user.followers.create!({ follower: user })
-      get :index, params: { user_id: user }
+    it 'returns a success response for followers' do
+      current_user.follower_followerships.create!({ follower: user })
+      get :index, params: { user_id: user, relationship: :followers }
+      expect(response).to be_successful
+    end
+
+    it 'returns a success response for followees' do
+      current_user.following_followerships.create!({ followee: user })
+      get :index, params: { user_id: user, relationship: :followees }
       expect(response).to be_successful
     end
   end
@@ -23,7 +29,7 @@ RSpec.describe FollowershipsController do
   end
 
   describe 'DELETE #destroy' do
-    before { current_user.followings.create(followee: user) }
+    before { current_user.following_followerships.create(followee: user) }
 
     it 'unfollow' do
       expect do

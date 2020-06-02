@@ -1,8 +1,8 @@
 <%= content_for :title, @user.name + " Followers" %>
 
-<%= render 'followers', users: @followers, user: @user %>
+<%= render 'followerships', users: @users, user: @user %>
 
-<% if @followers.empty? %>
+<% if @users.empty? %>
   <div class="notification is-success content">
     <%= @user.name %> doesn't have followers
   </div>

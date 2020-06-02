@@ -9,12 +9,12 @@ class FollowershipsController < ApplicationController
 
   def index
     offset = params.fetch(:offset, 0).to_i
-    @followers = @user.followers.includes(:follower).limit(LIMIT).offset(offset).order(created_at: :desc).all
-    @next = offset + LIMIT if @followers.size == LIMIT
+    @users = scope.limit(LIMIT).offset(offset).order(created_at: :desc).all
+    @next = offset + LIMIT if @users.size == LIMIT
   end
 
   def create
-    @followership = current_user.followings.new(followee: @user)
+    @followership = current_user.following_followerships.new(followee: @user)
     check_permission
 
     if @followership.save
@@ -31,12 +31,23 @@ class FollowershipsController < ApplicationController
 
   private
 
+  def scope
+    case params[:relationship]
+    when 'followees'
+      @user.followees
+    when 'followers'
+      @user.followers
+    else
+      raise(ActiveRecord::RecordNotFound)
+    end
+  end
+
   def set_user
     @user = User.from_param(params[:user_id]) || raise(ActiveRecord::RecordNotFound)
   end
 
   def set_followership
-    @followership = current_user.followings.find_by!(followee: @user)
+    @followership = current_user.following_followerships.find_by!(followee: @user)
   end
 
   def check_permission
