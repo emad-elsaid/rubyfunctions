@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_151402) do
+ActiveRecord::Schema.define(version: 2020_06_02_132558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 2020_04_22_151402) do
     t.index ["user_id"], name: "index_functions_on_user_id"
   end
 
+  create_table "functions_tags", force: :cascade do |t|
+    t.bigint "function_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["function_id", "tag_id"], name: "index_functions_tags_on_function_id_and_tag_id", unique: true
+    t.index ["function_id"], name: "index_functions_tags_on_function_id"
+    t.index ["tag_id"], name: "index_functions_tags_on_tag_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.string "likeable_type", null: false
     t.bigint "likeable_id", null: false
@@ -81,6 +91,14 @@ ActiveRecord::Schema.define(version: 2020_04_22_151402) do
     t.index ["function_id"], name: "index_saves_on_function_id"
     t.index ["user_id", "function_id"], name: "index_saves_on_user_id_and_function_id", unique: true
     t.index ["user_id"], name: "index_saves_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", limit: 20
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "functions_tags_count"
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

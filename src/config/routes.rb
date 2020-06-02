@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :notifications, only: %i[show index] do
     post :read_all, as: :read_all, on: :collection
   end
+  resources :tags, only: %i[show index]
 
   get 'timelines/latest', to: 'timelines#latest'
   get 'timelines/liked', to: 'timelines#liked'

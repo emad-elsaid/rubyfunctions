@@ -7,8 +7,11 @@ logger.info 'Creating users...'
 users = FactoryBot.create_list(:user, 100)
 
 logger.info 'Creating functions...'
+
+tags = 20.times.map { Faker::Hacker.adjective }.grep(/\A[\w\-]+\z/).uniq
+
 functions = users.map do |user|
-  FactoryBot.create_list(:function, 10, user: user)
+  FactoryBot.create_list(:function, 10, user: user, tags_list: tags.sample(3).join(','))
 end.flatten
 
 logger.info 'Creating likes...'
