@@ -1,3 +1,5 @@
 <div class="tags">
   <%= render tags %>
 </div>
+
+<%= link_to 'Load More', tags_path(offset: @next), remote: true, class: 'button is-fullwidth more' if @next %>

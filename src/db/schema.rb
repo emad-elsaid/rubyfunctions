@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_193553) do
+ActiveRecord::Schema.define(version: 2020_06_02_132558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,10 +49,14 @@ ActiveRecord::Schema.define(version: 2020_05_06_193553) do
     t.index ["user_id"], name: "index_functions_on_user_id"
   end
 
-  create_table "functions_tags", id: false, force: :cascade do |t|
-    t.bigint "function_id", null: false
-    t.bigint "tag_id", null: false
-    t.index ["function_id", "tag_id"], name: "index_functions_tags_on_function_id_and_tag_id"
+  create_table "functions_tags", force: :cascade do |t|
+    t.bigint "function_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["function_id", "tag_id"], name: "index_functions_tags_on_function_id_and_tag_id", unique: true
+    t.index ["function_id"], name: "index_functions_tags_on_function_id"
+    t.index ["tag_id"], name: "index_functions_tags_on_tag_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -93,6 +97,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_193553) do
     t.string "name", limit: 20
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "functions_tags_count"
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 

@@ -13,7 +13,8 @@ class Function < ApplicationRecord
   has_many :likes, dependent: :destroy, as: :likeable
   has_many :saves, dependent: :destroy
 
-  has_and_belongs_to_many :tags
+  has_many :functions_tags, dependent: :destroy
+  has_many :tags, through: :functions_tags
 
   def tags_list
     tags.map(&:name).join(', ')

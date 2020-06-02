@@ -4,7 +4,8 @@ class Tag < ApplicationRecord
                    length: { minimum: 3, maximum: 20 },
                    format: { with: /\A[a-z0-9\-]+\z/i }
 
-  has_and_belongs_to_many :functions
+  has_many :functions_tags, dependent: :destroy
+  has_many :functions, through: :functions_tags
 
   def to_param
     name

@@ -1,2 +1,1 @@
- <%= link_to tag.name, tag_path(tag), class: 'tag is-link' %>
- 
+<%= link_to "#{tag.name} (#{tag.functions_tags.size})", tag_path(tag), class: 'tag is-link' %>
