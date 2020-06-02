@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe FunctionsController, type: :controller do
-  let!(:tags) { 10.times.map { Faker::Hacker.adjective }.grep(/\A[\w\-]+\z/).uniq.sample(3) }
-  let!(:tags_list) { tags.join(', ') }
+  let(:tags_size) { 3 }
+  let!(:tags_list) { build_list(:tag, tags_size).map(&:name).join(', ') }
 
   let(:valid_attributes) { build(:function).attributes.merge(tags_list: tags_list) }
   let(:invalid_attributes) { build(:function, :invalid_name).attributes }
@@ -53,7 +53,7 @@ RSpec.describe FunctionsController, type: :controller do
         expect do
           post :create, params: { function: valid_attributes, user_id: user }
         end.to change(Function, :count).by(1)
-                                       .and change(Tag, :count).by(tags.size)
+                                       .and change(Tag, :count).by(tags_size)
       end
 
       it 'redirects to the created function' do
