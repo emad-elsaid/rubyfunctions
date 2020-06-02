@@ -9,8 +9,11 @@ RSpec.describe Tag, type: :model do
 
   it { is_expected.to allow_value('tag').for :name }
   it { is_expected.to allow_value('another-valid-tag').for :name }
+  it { is_expected.to allow_value('MRI').for :name }
 
   it { is_expected.to_not allow_value('also_a_tag').for :name }
+  it { is_expected.to_not allow_value('c').for :name }
+  it { is_expected.to_not allow_value('ci').for :name }
   it { is_expected.to_not allow_value('a.tag').for :name }
   it { is_expected.to_not allow_value('sapces in tag').for :name }
   it { is_expected.to_not allow_value('تاج_عربي').for :name }
