@@ -8,7 +8,7 @@ class FunctionsController < ApplicationController
   LIMIT = 30
 
   def index
-    @function = @user.functions.new
+    @function = Function.new(user: @user)
     check_permission
 
     offset = params.fetch(:offset, 0).to_i
