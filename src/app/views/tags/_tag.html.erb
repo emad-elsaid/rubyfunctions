@@ -1,1 +1,8 @@
-<%= link_to "#{tag.name} (#{tag.functions_tags.size})", tag_path(tag), class: 'tag is-link' %>
+<div class="control">
+  <div class="tags has-addons">
+    <%= link_to "#{tag.name}", tag_path(tag), class: 'tag is-link' %>
+    <span class="tag is-info">
+      × <%=tag.functions_tags.size %>
+    </span>
+  </div>
+</div>
