@@ -5,7 +5,7 @@
     <% else %>
       <li>
     <% end %>
-    <%= link_to user_functions_path(user), title: 'Saved functions' do %>
+    <%= link_to user_functions_path(user), title: 'Published functions' do %>
       Published functions (<%= user.functions.size %>)
     <% end %>
     </li>
@@ -26,7 +26,7 @@
     <% else %>
       <li>
     <% end %>
-    <%= link_to user_followers_path(user), title: 'Saved functions' do %>
+    <%= link_to user_followers_path(user), title: 'Followers functions' do %>
       Followers (<%= user.followers.size %>)
     <% end %>
     </li>
