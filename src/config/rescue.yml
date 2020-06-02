@@ -1,0 +1,11 @@
+development:
+  record_not_found: false
+  report_to_sentry: false
+
+test:
+    record_not_found: false
+    report_to_sentry: false
+
+production:
+    record_not_found: true
+    report_to_sentry: true
