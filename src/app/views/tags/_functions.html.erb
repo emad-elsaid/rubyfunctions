@@ -1,0 +1,3 @@
+<%= render functions %>
+
+<%= link_to 'Load More', tag_path(tag, offset: @next), remote: true, class: 'button is-fullwidth more' if @next %>
