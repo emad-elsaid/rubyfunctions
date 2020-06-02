@@ -1,3 +1,5 @@
+<h1 class="is-size-3 m-b-md">Tag: <%= @tag.name %> (<%=@tag.functions.size %>)</h1>
+
 <%= render @functions %>
 
 <%= link_to 'Load More', tag_path(@tag, offset: @next), remote: true, class: 'button is-fullwidth more' if @next %>
