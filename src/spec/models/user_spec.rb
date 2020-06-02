@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   subject { create :user, github_id: 'u123' }
 
   it { is_expected.to have_many :followers }
-  it { is_expected.to have_many :following_followerships}
+  it { is_expected.to have_many :following_followerships }
   it { is_expected.to have_many :notifications }
 
   it { is_expected.to validate_presence_of :name }
