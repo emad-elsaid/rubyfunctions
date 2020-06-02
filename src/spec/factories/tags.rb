@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :tag do
-    name { Faker::Hacker.adjective.gsub(' ', '-') }
+    sequence(:name) { |n| "tag-#{n}" }
   end
 end

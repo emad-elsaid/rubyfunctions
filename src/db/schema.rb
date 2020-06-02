@@ -90,9 +90,10 @@ ActiveRecord::Schema.define(version: 2020_05_06_193553) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 20
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
