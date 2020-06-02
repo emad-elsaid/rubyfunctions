@@ -6,7 +6,7 @@ class TagsController < ApplicationController
   def show
     offset = params.fetch(:offset, 0).to_i
 
-    @functions = @tag.functions.limit(LIMIT).offset(offset).order(likes_count: :desc).all
+    @functions = @tag.functions.limit(LIMIT).offset(offset).order(created_at: :desc).all
     @next = offset + LIMIT if @functions.size == LIMIT
   end
 
