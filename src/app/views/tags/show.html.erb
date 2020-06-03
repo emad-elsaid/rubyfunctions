@@ -1,3 +1,4 @@
+<%= content_for :title, @tag.name %>
 <div class="tags has-addons are-large">
   <%= link_to @tag.name, tag_path(@tag), class: 'tag is-link' %>
   <span class="tag is-info">
