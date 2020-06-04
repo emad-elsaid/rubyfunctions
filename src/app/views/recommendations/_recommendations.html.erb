@@ -1,0 +1,2 @@
+<%= render 'recommendations/recommendation', recommendation_title: 'Similar Functions', functions: more_from_user(function.user) %>
+<%= render 'recommendations/recommendation', recommendation_title: "More from #{function.user.name}", functions: more_from_user(function.user) %>

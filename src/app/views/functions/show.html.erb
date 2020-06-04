@@ -1,5 +1,14 @@
 <%= content_for :title, sprintf("%s - by: %s", @function.name, @user.name) %>
-<%= render 'tags/tags', tags: @function.tags %>
-<%= render @function, full: true %>
+
+<div class="columns">
+  <div class="column">
+    <%= render 'recommendations/recommendations', function: @function %>
+  </div>
+  <div class="column is-four-fifths">
+    <%= render 'tags/tags', tags: @function.tags %>
+    <%= render @function, full: true %>
+  </div>
+</div>
+
 <%= render @function.comments %>
 <%= render 'comments/form', comment: @comment if can?(@comment, :create) %>
