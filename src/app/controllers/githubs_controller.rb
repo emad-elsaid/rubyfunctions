@@ -4,7 +4,7 @@ class GithubsController < ApplicationController
   def new
     user = User.find_or_create_from_github_user(github_user)
     session[:user] = user.id
-    redirect_to root_path
+    redirect_back(fallback_location: root_path, allow_other_host: false)
   end
 
   private
