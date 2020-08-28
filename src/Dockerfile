@@ -1,8 +1,10 @@
 FROM ruby:2.6.3-slim
 ENV LANG=C.UTF-8
-RUN apt update && apt install -qq -y build-essential nodejs libpq-dev postgresql-client npm --fix-missing --no-install-recommends
+RUN apt update && apt install -qq -y curl gnupg
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt update && apt install -qq -y build-essential nodejs libpq-dev postgresql-client yarn --fix-missing --no-install-recommends
 RUN gem install bundler
-RUN npm install --global yarn
 
 ENV app /app
 RUN mkdir -p $app
