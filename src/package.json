@@ -2,7 +2,7 @@
   "name": "rubyfunctions",
   "private": true,
   "dependencies": {
-    "@rails/ujs": "^6.0.3",
+    "@rails/ujs": "^6.1.1",
     "@rails/webpacker": "5.2.1",
     "codemirror": "^5.57.0"
   },
