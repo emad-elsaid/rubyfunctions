@@ -83,7 +83,7 @@ GEM
       i18n (>= 1.6, < 2)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
-    ffi (1.13.1)
+    ffi (1.15.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashdiff (1.0.1)
@@ -96,7 +96,7 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    listen (3.2.1)
+    listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.7.0)
@@ -274,7 +274,7 @@ DEPENDENCIES
   faker
   kramdown
   kramdown-parser-gfm
-  listen (>= 3.0.5, < 3.3)
+  listen (>= 3.0.5, < 3.5)
   pg
   pry-rails
   puma (~> 5.2)
