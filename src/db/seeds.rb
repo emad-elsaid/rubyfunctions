@@ -1,6 +1,6 @@
 raise 'Seeding is reserved for development' unless Rails.env.development?
 
-logger = Logger.new(STDOUT)
+logger = Logger.new($stdout)
 logger.level = Logger::DEBUG
 
 logger.info 'Creating users...'

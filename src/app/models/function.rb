@@ -1,5 +1,5 @@
 class Function < ApplicationRecord
-  validates :name, presence: true, uniqueness: { scope: :user_id }, format: { with: /\A[0-9a-z_]+[\?!]?\z/i }
+  validates :name, presence: true, uniqueness: { scope: :user_id }, format: { with: /\A[0-9a-z_]+[?!]?\z/i }
   validates :tags, length: { minimum: 0, maximum: 3, message: :maximum_tags_exceeded }
   validates :usage, presence: true
   validates :code, presence: true, code: true
