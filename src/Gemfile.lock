@@ -97,7 +97,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (1.8.9)
+    i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     kramdown (2.3.1)
       rexml
@@ -238,7 +238,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.2)
-    skylight (5.0.1)
+    skylight (5.1.0)
       activesupport (>= 5.2.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
