@@ -12,7 +12,7 @@ gem 'puma', '~> 5.2'
 gem 'rest-client'
 gem 'rouge'
 gem 'sass-rails', '~> 6'
-gem 'webpacker', '~> 5.2'
+gem 'webpacker', '~> 5.4'
 
 group :development, :test do
   gem 'factory_bot_rails'
